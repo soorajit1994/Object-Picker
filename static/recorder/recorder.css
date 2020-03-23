@@ -1,0 +1,425 @@
+body {
+	margin: 0;
+	background: url(/static/image/sativa.png) repeat fixed;
+	
+    -webkit-font-smoothing: antialiased !important;
+    font-family: 'candara';
+	
+  }
+  .brand{
+	float: left;
+	margin:5px;
+	
+	font-size: 35px;
+  }
+  h1 {
+	font-size: 50px;
+  font-family: 'candara';
+	color:#800020;
+  }
+  
+  #timer {
+	font-size: 50px;
+	margin:10px;
+  color:white;
+  
+  }
+  
+  button {
+	padding: 10px 30px;
+	background: none;
+	border: 1px solid #fff;
+	color: #fff;
+	border-radius: 8px;
+	font-size: 16px;
+	margin: 0 5px;
+	outline: none;
+  cursor: pointer;
+  font-family: 'candara';
+  }
+  
+  
+  
+  #navbar {
+	overflow: hidden;
+  background-color: #222533;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 2px 4px 8px rgba(0, 0, 0, 0.28);
+
+  }
+  
+  
+  
+  
+  
+  .content {
+    
+	padding: 16px;
+  }
+  
+  .sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+  }
+  
+  .sticky + .content {
+	padding-top: 60px;
+  }
+
+ 
+ 
+ 
+  .icon-bg{
+    position:absolute;
+    left:0;top:0;bottom:0;
+    z-index:1;
+    width:100%;
+    transform:translate3d(-43px,0,0);
+    transition: all .2s ease-in-out;
+    background:#F98E33;
+  }
+ 
+ 
+ 
+ 
+  .sidenav {
+    height: 100%;
+    width: 55px !important;
+    position: fixed;
+    z-index: 9999;
+    top: 91px;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 2px 4px 8px rgba(0, 0, 0, 0.28);
+  }
+  
+ 
+ 
+ 
+
+.sidenav a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+  
+}
+
+.sidenav a:hover {
+  background-color: #000;
+  font-size: 24px;
+}
+
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background: #23AE89;
+  color: white;
+}
+.google {
+  background: #dd4b39;
+  color: white;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #3B5998;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #d0d0d0;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+  margin: 10px;
+  
+  background: white;
+
+  
+}
+.card2 {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+  margin: 10px;
+  
+  
+  
+  background: white;
+ 
+  
+}
+#stick{
+  height: 400px;
+  overflow-y:scroll;
+}
+.card2:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.header {
+    
+ 
+  background:#1c53a3;
+  width: 100%;
+ height:35px;
+ color:white;
+ text-align:center;
+ border-color: #0d274c;
+ border: 1px solid transparent;
+ font-family: 'candara';
+ 
+  
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background:linear-gradient(90deg, #0d274c, #1c53a3);
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color:white;
+  font-family: 'candara';
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #909299;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #909299;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  
+}
+
+
+.tree { margin: 1em; }
+
+.tree input {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  }
+
+.tree input ~ ul { display: none; }
+
+.tree input:checked ~ ul { display: block; }
+
+/* ————————————————————–
+  Tree rows
+*/
+.tree li {
+  line-height: 1.2;
+  position: relative;
+  padding: 0 0 1em 1em;
+  }
+
+.tree ul li { padding: 1em 0 0 1em; }
+
+.tree > li:last-child { padding-bottom: 0; }
+
+/* ————————————————————–
+  Tree labels
+*/
+.tree_label {
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  }
+
+label.tree_label { cursor: pointer; }
+
+label.tree_label:hover { color: #666; }
+
+/* ————————————————————–
+  Tree expanded icon
+*/
+label.tree_label:before {
+  background: #000;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  float: left;
+  margin: 0 1em 0 -2em;
+  width: 1em;
+  height: 1em;
+  border-radius: 1em;
+  content: '+';
+  text-align: center;
+  line-height: .9em;
+  }
+
+:checked ~ label.tree_label:before { content: '–'; }
+
+/* ————————————————————–
+  Tree branches
+*/
+.tree li:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -.5em;
+  display: block;
+  width: 0;
+  border-left: 1px solid #777;
+  content: "";
+  }
+
+.tree_label:after {
+  position: absolute;
+  top: 0;
+  left: -1.5em;
+  display: block;
+  height: 0.5em;
+  width: 1em;
+  border-bottom: 1px solid #777;
+  border-left: 1px solid #777;
+  border-radius: 0 0 0 .3em;
+  content: '';
+  }
+
+label.tree_label:after { border-bottom: 0; }
+
+:checked ~ label.tree_label:after {
+  border-radius: 0 .3em 0 0;
+  border-top: 1px solid #777;
+  border-right: 1px solid #777;
+  border-bottom: 0;
+  border-left: 0;
+  bottom: 0;
+  top: 0.5em;
+  height: auto;
+  }
+
+.tree li:last-child:before {
+  height: 1em;
+  bottom: auto;
+  }
+
+.tree > li:last-child:before { display: none; }
+
+.tree_custom {
+  display: block;
+  background: #eee;
+  padding: 1em;
+  border-radius: 0.3em;
+}
+#fontSizeWrapper { font-size: 16px; }
+
+#fontSize {
+  width: 100px;
+  font-size: 1em;
+  }
+  .color-box {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: #ccc;
+    
+  
+}
+
+
+#Tokyo{
+  color:#FF1493;
+
+
+
+}
+.card-footer {
+  background: #4e505b;
+  color:white;
+  border-radius:4px;
+  padding: 10px;
+  
+}
+
+.logo {
+
+    color: white;
+    margin:4px;
+  
+}
+
+.heart {
+
+	animation: beat .25s infinite alternate;
+	transform-origin: center;
+}
+
+/* Heart beat animation */
+@keyframes beat{
+	to { transform: scale(1.4); }
+}
+
+.collapsible {
+  background-color: #d2d3d6;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 98%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    font-family: 'candara';
+}
+
+.active, .collapsible:hover {
+ font-size: 18px;
+ color:white;
+ background-color: #4e505b;
+}
+.sectionContent {
+  text-align: left;
+  margin:20px;
+  padding-left: 15px;
+ 
+}
+#myInput {
+  
+ 
+  font-size: 16px;
+ 
+  border: 1px solid #ddd;
+ 
+}

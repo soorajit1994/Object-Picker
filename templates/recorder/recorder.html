@@ -1,0 +1,176 @@
+<link rel="shortcut icon" href="/static/image/QICON.ico" type="image/x-icon" /> 
+
+
+<script src="/static/jquery-bootstrap/jquery.min.js"></script>
+<script src="/static/jquery-bootstrap/popper.js"></script>
+<script src="/static/jquery-bootstrap/bootstrap.min.js"></script>
+<script src="/static/jquery-bootstrap/notify.js"></script>
+<script src="/static/jquery-bootstrap/notify.min.js"></script>
+
+<link rel="stylesheet" type="text/css"  href="/static/recorder/recorder.css" >
+<script src="/static/jquery-bootstrap/less.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+    <title>
+     Object Picker
+    </title>
+    <body>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class='fa fa-sort-up' style='font-size:40px'></i></button>
+        <iframe id="my_iframe" style="display:none;"></iframe>
+<div id="navbar">
+        <span class="brand" style="color:white; margin:20px;	font-family: 'candara';font-weight: 900;"><a class="logo"><i class="fa fa-recycle"></i></a> OBJECT PICKER   </span>
+        
+        <div style=" display: flex; float: right;flex-direction: row;">
+          
+                <div id="timer">00:00</div><br>
+                <div style="margin:24px;">
+             <a href="#" id="start" >  <img src="/static/image/record.png"  width="40" height="40">
+             </a>
+             
+                
+              
+      <a id="stop" href="#"><img src="/static/image/stop.png" class="heart" width="40" height="40"></a></div></div>
+      </div>
+      
+      <br><br><br><br><br>
+     
+      <div>
+        <div class="sidenav">
+          <a href="#" title="Launch Browser" class="google" onclick='Launch();'><i class="fa fa-rocket"></i></a> 
+          <a href="#" title="Clear All"  class="facebook" onclick='EraseRec();'><i class="fa fa-eraser"></i></a> 
+          <a href="#" title="Save as Excel"  class="twitter" onclick='downloadCSVRec({ filename: "Recorded.csv" });'><i class="fa fa-file-excel-o"></i></a> 
+          <a href="#" title="Pick All" style="background:#F98E33;color: white;" onclick='GetAll()'><i class="fa fa-list"></i></a> 
+          <a style="       
+          background:#6A55C2;color: white; " href="#" title="Configurations" ><i class="fa fa-cog"></i></a> 
+        </div>
+
+      <div class="content">
+        
+        <div style="margin-left: 160px;margin-right: 160px; /* Same as the width of the sidenav */display:flex;flex-direction: row;">
+      
+    <div class="card">
+      <div class="tab">
+        <button class="tablinks" ><b>Picked Objects</b></button> </div>
+    
+        <div style="margin:10px; height:400px;overflow-y:scroll;">
+
+
+
+          <ul id="mylist">
+            <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-rocket"></i> <strong> Launch the browser and Go to URL.</strong></button></div></li>
+            <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-list"></i><strong> Once Launched pick objects.</strong> </button></div></li>
+            <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-file-excel-o"></i><strong> Save all objects as Excel. </strong> </button></div></li>
+            <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-eraser"></i> <strong> Click on  Eraser to clear. </strong></button></div></li>
+            
+          </ul>  
+        </div>
+        
+        </div>
+    
+          <div class="card2">
+            <div class="tab">
+              <button id="prop" class="tablinks" onclick="openCity(event, 'London')"><b>Properties</b></button>
+              <button id="op" class="tablinks" onclick="openCity(event, 'Paris')"><b>CSS Properties</b></button>
+              <button id="Styles" class="tablinks" onclick="openCity(event, 'Kolkata')"><b>Operations</b></button>
+              <button id="hir" class="tablinks" onclick="openCity(event, 'Tokyo')"><b>Hierarchy</b></button>
+            
+            </div>
+            <div id="stick">
+          
+          
+          <div id="London" class="tabcontent">
+            <table id="myTable" class="table">
+              <thead>
+                <tr>
+                  <th>Properties</th>
+                  <th>Values</th>
+                
+                </tr>
+              </thead>
+              <tbody id="PROP">
+                
+               
+              </tbody>
+            </table>
+          </div>
+          
+          <div id="Paris" class="tabcontent">
+            <table id="myTable2" class="table">
+              <thead>
+                <tr>
+                  <th>CSS Properties</th>
+                  <th>Values</th>
+                  
+                
+                </tr>
+              </thead>
+              <tbody id="CSS">
+                
+              
+               
+              </tbody>
+            </table>
+         
+          </div>
+          <div id="Kolkata" class="tabcontent">
+            <table id="myTable3" class="table">
+              <thead>
+                <tr>
+                  <th>Operations</th>
+                  <th>Descriptions</th>
+                
+                </tr>
+              </thead>
+              <tbody id="OPP">
+                <tr>
+                  
+     
+                 
+                </tr>
+              
+               
+              </tbody>
+            </table>
+         
+          </div>
+          
+          <div id="Tokyo" class="tabcontent">
+           
+            
+            </div>
+          </div>
+            <div id="card-footer" style="display:none;" class="card-footer">
+             
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+            
+        </div>
+      </div>
+        </body>
+</html>
+
+
+
+
+<script type="text/javascript" src="/static/recorder/recorder.js"></script>
