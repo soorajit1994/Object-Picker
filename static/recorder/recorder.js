@@ -44,6 +44,7 @@ var watch = (function(){
 
 
          try{
+           
           $.getJSON('/QRec', {
 				  
             track:"Hello",
@@ -324,6 +325,7 @@ function openCity(evt, cityName) {
 
 $(document).ready(function() {
 document.getElementById("prop").click();
+$("#loader").hide();
 
 });
 function isNumber(n) {
@@ -395,7 +397,7 @@ function CopyToClipboard(containerid) {
 
 
   function GetAll(){
-
+    $("#loader").show();
 
     $.getJSON('/collect', {
 				  
@@ -404,6 +406,7 @@ function CopyToClipboard(containerid) {
 
     if(data.status==="FAIL"){
      alert("Error: Driver is not initialized");
+     $("#loader").hide();
 
     }
 
@@ -440,6 +443,7 @@ function CopyToClipboard(containerid) {
     }
    
     document.getElementById("mylist").innerHTML=listss
+    $("#loader").hide();
     showDetails(xpath_data.length-1);
     }
   }
