@@ -1,28 +1,29 @@
 var freq_dict={};
 var inde=0;
-function getDomPath(el) {
+var DOCUMENT=document;
+var Iframe_Xpath=''
+var Iframe_name=''
+var Iframe_web=''
+
+function getDomPath(el,Xpath) {
 
 
-    var html=`   <ul class="tree">
+    var P= Iframe_Xpath!==""?`Iframe-`+Iframe_name:`Page-`+DOCUMENT.title.substring(0,40);
+   var B=  Iframe_Xpath!==""?`Browser-`+Iframe_web:`Browser-`+DOCUMENT.title.substring(0,40);
+   var Iframe_Xpath2= Iframe_Xpath!==""?Iframe_Xpath:" ..."
+    var html=`<h5 align="center"><b>Object Hierarchy</b></h5> <div style="color:#FF1493">  <ul class="tree">
     <li>
       <input type="checkbox" checked="checked" id="c1" />
-      <label class="tree_label" for="c1"><i class="fa fa-globe"></i> Browser-`+document.title.substring(0,40)+`</label>
+      <label class="tree_label" for="c1"><i class="fa fa-globe"></i>`+B+`</label>
       <ul>
         <li>
           <input type="checkbox" checked="checked" id="c2" />
-          <label class="tree_label" for="c2"><i class="fa fa-file"></i> Page-`+document.title.substring(0,40)+`</label>
-          <ul>
-        <li>
-          <input type="checkbox" checked="checked" id="c3" />
-          <label class="tree_label" for="c3">...</label>
-          <ul>
-        <li>
-          <input type="checkbox" checked="checked" id="c4" />
-          <label class="tree_label" for="c4">`+el.parentNode.parentNode.tagName.toLowerCase()+"-"+ObjectGen(el.parentNode.parentNode)+`</label>
+          
+          <label class="tree_label" for="c2"><i class="fa fa-file"></i>`+P+` </label>
           <ul>
           <li>
             <input type="checkbox" checked="checked" id="c5" />
-            <label for="c5" class="tree_label">`+el.parentNode.tagName.toLowerCase()+"-"+ObjectGen(el.parentNode)+`</label>
+            <label for="c5" class="tree_label">Parent-`+ObjectGen(el.parentNode)+`</label>
             <ul>
               <li><span class="tree_label"><i class="fa fa-pencil"></i> WebElement-`+ObjectGen(el)+`</span></li>
             
@@ -31,20 +32,6 @@ function getDomPath(el) {
          
         
         </ul>
-
-        </li>
-
-
-
-      </ul>
-
-
-
-        </li>
-
-
-
-      </ul>
 
 
 
@@ -58,6 +45,37 @@ function getDomPath(el) {
     
    
   </ul>
+  </div>
+    `
+
+
+    html+=`<hr><h5 align="center"><b>Xpath Hierarchy</b></h5> <div style="color:#6A55C2">  <ul class="tree">
+    <li>
+      <input type="checkbox" checked="checked" id="c1" />
+      <label class="tree_label" for="c1"><i class="fa fa-globe"></i>`+B+`</label>
+      <ul>
+        <li>
+          <input type="checkbox" checked="checked" id="c2" />
+          
+          <label class="tree_label" for="c2"> `+Iframe_Xpath2+` </label>
+          <ul>
+              <li><span class="tree_label"> `+Xpath+`</span></li>
+            
+            </ul>
+
+
+
+        </li>
+
+
+
+      </ul>
+    </li>
+    
+    
+   
+  </ul>
+  </div>
     `
    return html;
   }
@@ -78,7 +96,7 @@ data["NODES"]=nodes;
 data["VALUES"]=values;
 var data=GetStyles(el,data);
 data=getOperation(el,data);
-data["HIERARCHY"]=getDomPath(el);
+data["HIERARCHY"]=getDomPath(el,data["XPATH"]);
 return data;
 }
 function GetStyles(el,data){
@@ -227,7 +245,7 @@ function check_div(e){
         if(element.id!==""){
             return "//*[@id='"+element.id+"']"
         }
-        if (element===document.body){
+        if (element===DOCUMENT.body){
         
             return element.tagName.toLowerCase();
         }
@@ -263,7 +281,7 @@ function check_div(e){
        
         
         
-        if (element===document.body){
+        if (element===DOCUMENT.body){
         
             return element.tagName.toLowerCase();
         }
@@ -321,7 +339,7 @@ function check_div(e){
     function getElementsByXPath(xpath, parent)
     {
         let results = [];
-        let query = document.evaluate(xpath, parent || document,
+        let query = DOCUMENT.evaluate(xpath, parent || DOCUMENT,
             null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         for (let i = 0, length = query.snapshotLength; i < length; ++i) {
             results.push(query.snapshotItem(i));
@@ -329,15 +347,18 @@ function check_div(e){
         return results;
     }
     ///FOR COLLECTION TAGS AND ATTRIBUTES  ///  
+
+    var Iframe_element=[];
+    var ALL=[];
    var attributes=[];
    var tags=[];
-   
+   var attribute_list =[];
    var rejected_tags=['SCRIPT','STYLE','NOSCRIPT','NOFRAME','TRACK','VIDEO','FONT','EVENTSOURCE','RECT','PATH','path','circle'];
    var rejected_attributes=['style','align','allow','autocapitalize','autocomplete','autofocus','autoplay','bgcolor','border','buffered','charset','checked','color','cols','colspan','contenteditable','controls','crossorigin','decoding','disabled','download','draggable'
 ,'hidden','spellcheck','tabindex','translate','height','maxlength','max','min','sandbox','rowspan','width','size','aria-haspopup','aria-expanded','aria-labelledby','aria-label','datetime','aria-hidden','focusable','id','class','d'];
 var rejected_event_attributes=arguments[0];
-
-var elements=document.body.getElementsByTagName("*");
+function Main(elements){
+////var elements=DOCUMENT.body.getElementsByTagName("*");
     for(e=0;e<elements.length;e++){
             var el=elements[e];
         for (var i = 0, atts = el.attributes, n = atts.length, arr = []; i < n; i++){
@@ -356,20 +377,24 @@ var elements=document.body.getElementsByTagName("*");
 
 ////******************************/
     var results='False';
-    var ALL=[];
+    
     var XPATHS=[];
     var INSERTED_ELEMENTS=[];
     X=''
     var guessable_elements = tags;
-    var attribute_list = attributes;
-    var elements=document.body.getElementsByTagName("*");
+    attribute_list = attributes;
+
+    var elements=DOCUMENT.body.getElementsByTagName("*");
   
-        
-        
+     
         
         for (e=0;e<elements.length;e++){
             try{
             if(guessable_elements.includes(elements[e].tagName)&&!elements[e].hasAttribute("type")||(elements[e].hasAttribute("type")&&elements[e].type!=="hidden"&&elements[e].type!=="HIDDEN")&&elements[e]!==null){
+
+                if(elements[e].tagName==="IFRAME"){
+                    Iframe_element.push(elements[e]);
+                }
             for (attr=0;attr<attribute_list.length;attr++){
                 ///console.log("ATTR",attribute_list[attr],elements[e].hasAttribute(attribute_list[attr]))
                 if(elements[e].hasAttribute(attribute_list[attr])){
@@ -614,8 +639,10 @@ var elements=document.body.getElementsByTagName("*");
     
     
         }
-        
-       
+    ///    console.log(Iframe_element);
+    
+    
+    }
     function guess_xpath(tag,attr,element){
     
     
@@ -637,8 +664,26 @@ var elements=document.body.getElementsByTagName("*");
     return XPATH;
     }
    
-    console.log(ALL);
     
-    return ALL;
 
-    
+
+
+
+Main(DOCUMENT.body.getElementsByTagName("*"))
+///console.log(ALL)
+
+for(k=0;k<Iframe_element.length;k++){
+    try{
+        Iframe_name=ObjectGen(Iframe_element[k])
+        Iframe_Xpath=getPathTo(Iframe_element[k])
+        Iframe_web=DOCUMENT.title.substring(0,70);
+    DOCUMENT=Iframe_element[k].contentWindow.document;
+    Main(Iframe_element[k].contentWindow.document.body.getElementsByTagName("*"))
+    }
+    catch(err){
+
+        console.log("Pass Iframe")
+    }
+}
+console.log(ALL)
+return ALL;

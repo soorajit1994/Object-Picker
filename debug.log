@@ -199,3 +199,296 @@
 [0321/171044.317:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
 [0321/171044.317:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
 [0321/171821.835:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0323/122456.807:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0323/122456.809:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0323/122456.809:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0323/123503.539:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0323/123503.541:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0323/123503.542:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0323/123553.284:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0323/123553.286:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0323/123553.286:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0323/123655.169:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0323/164133.537:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0323/164133.543:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0323/164133.544:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0323/183710.769:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0323/214223.956:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0323/214223.958:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0323/214223.958:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/151120.032:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/151120.056:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/151120.056:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/170436.068:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/170436.071:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/170436.071:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/175611.641:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/175611.643:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/175611.643:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/194810.731:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/194810.733:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/194810.733:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/200418.290:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/200418.291:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/200418.292:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/210202.741:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/210202.743:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/210202.744:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/222220.563:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/222220.566:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/222220.566:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/222939.389:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/222952.271:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/222952.273:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/222952.274:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/223235.275:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/223307.964:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/223307.965:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/223307.966:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/224000.019:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/224056.322:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/224056.324:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/224056.325:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/224304.163:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/224319.441:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/224319.444:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/224319.444:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/224535.603:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/225104.250:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/225104.251:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/225104.252:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/231841.871:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/231851.283:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/231851.284:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/231851.285:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/232015.279:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/232026.618:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/232026.622:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/232026.622:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/232232.615:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/232248.491:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/232248.493:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/232248.494:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/232324.030:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/232333.649:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/232333.651:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/232333.652:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/232411.677:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/232417.887:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/232417.890:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/232417.890:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/233256.254:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/233312.508:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/233312.510:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/233312.510:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/233525.829:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/233550.952:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/233550.954:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/233550.955:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/233832.350:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/233843.586:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/233843.588:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/233843.588:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/234229.726:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/234229.728:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/234229.728:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/234507.381:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/234520.174:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/234520.176:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/234520.176:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/234805.557:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0325/234841.680:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/234841.682:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/234841.682:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/235648.907:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0325/235648.910:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0325/235648.910:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/000134.402:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/000134.404:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/000134.405:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/002835.498:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/002849.911:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/002849.913:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/002849.913:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/003326.337:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/003340.333:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/003340.335:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/003340.335:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/004330.041:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/004342.658:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/004342.660:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/004342.660:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/004456.409:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/004508.760:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/004508.762:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/004508.763:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/005124.959:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/005137.088:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/005137.091:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/005137.092:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/005248.002:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/005259.673:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/005259.676:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/005259.676:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/005403.654:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/005418.440:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/005418.442:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/005418.443:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/005557.440:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/005612.145:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/005612.147:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/005612.147:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/010113.752:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/010119.720:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/010119.722:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/010119.723:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/010348.864:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/010401.738:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/010401.740:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/010401.741:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/010701.318:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/010836.792:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/010836.795:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/010836.795:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/011016.615:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/011027.369:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/011027.371:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/011027.371:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/011627.534:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/011725.223:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/011725.225:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/011725.226:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/012824.317:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/112304.848:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/112304.850:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/112304.850:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/114351.107:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/114409.877:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/114409.879:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/114409.879:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/114820.534:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/114849.283:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/114849.285:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/114849.285:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/115634.335:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/115645.969:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/115645.971:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/115645.971:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/120644.101:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/120656.692:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/120656.694:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/120656.695:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/121117.246:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/121137.298:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/121137.299:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/121137.300:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/121453.117:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/121516.435:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/121516.436:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/121516.437:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/123139.663:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/123202.315:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/123202.317:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/123202.318:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/123247.005:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/123256.004:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/123256.006:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/123256.007:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/123612.574:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/123626.149:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/123626.151:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/123626.151:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/123831.149:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/124002.036:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/124002.037:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/124002.038:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/124337.630:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/124403.053:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/124403.055:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/124403.055:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/124626.371:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/124626.372:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/124626.373:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/131638.791:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/131650.501:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/131650.504:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/131650.504:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/131809.349:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/131819.178:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/131819.180:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/131819.180:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/131946.933:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/132127.823:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/132127.825:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/132127.825:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/132640.373:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/132652.607:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/132652.608:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/132652.609:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/132745.876:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/132810.490:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/132810.492:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/132810.492:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/133014.237:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/133032.358:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/133032.359:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/133032.360:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/133246.919:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/133257.018:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/133257.020:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/133257.021:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/133501.877:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/133514.617:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/133514.619:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/133514.619:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/133631.134:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/133647.743:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/133647.745:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/133647.745:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/134101.479:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/134114.332:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/134114.334:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/134114.334:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/134315.102:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/134411.598:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/134411.600:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/134411.601:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/134515.252:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/134529.389:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/134529.391:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/134529.392:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/134644.837:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/134718.427:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/134718.429:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/134718.429:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/135024.805:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/135051.205:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/135051.206:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/135051.207:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/140045.766:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/140059.650:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/140059.652:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/140059.652:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/141236.726:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/141316.152:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/141316.154:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/141316.155:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/141447.739:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/141447.741:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/141447.741:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/141951.598:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/142039.068:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/142039.069:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/142039.070:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/143534.501:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/143534.503:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/143534.504:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/150423.566:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/150445.593:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/150445.596:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/150445.596:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/151202.054:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating
+[0326/151218.314:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/151218.316:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0326/151218.317:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Stanper\Reports\Dump: The system cannot find the path specified. (0x3)
+[0326/152025.038:ERROR:crashpad_client_win.cc(131)] crash server failed to launch, self-terminating

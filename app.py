@@ -17,7 +17,8 @@ app = Flask(__name__)
 app.secret_key = "abc"
 @app.route('/launch',methods=['GET', 'POST'])
 def launch():
-    PL_PA.initiate_driver()
+    url=request.args.get('url', 0, type=str)
+    PL_PA.initiate_driver(url)
     return jsonify(status='launched')
 
 @app.route('/',methods=['GET', 'POST'])
@@ -91,6 +92,25 @@ def collect():
         except (selenium.common.exceptions.WebDriverException,AttributeError) as e:
             print(str(e))
             return jsonify(status="FAIL")
+@app.route('/to_pageloc')
+def to_pageloc():
     
+    xpath=request.args.get('xpath', 0, type=str)
+    name=request.args.get('name', 0, type=str)
+    tag=request.args.get('tag', 0, type=str)
+    xpath=ast.literal_eval(xpath)
+    name=ast.literal_eval(name)
+    tag=ast.literal_eval(tag)
+    L=PL_PA.pageLocatorCreation(name,xpath)
+    L2=PL_PA.pageActionCreation(tag,name,xpath)
+    return jsonify(result=L,result2=L2)   
+
+@app.route('/locate')
+def locate():
+    xpath=request.args.get('xpath', 0, type=str)
+    status=PL_PA.locate(xpath)
+    
+
+    return jsonify(status=status) 
 if __name__ == '__main__':
-   app.run(debug = True)
+   app.run(debug = True,host="0.0.0.0",port=4100)

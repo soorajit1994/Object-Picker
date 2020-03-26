@@ -1,4 +1,55 @@
 
+if(sessionStorage.getItem("IFRAME")){
+    DOCUMENT=getElementsByXPath(sessionStorage.getItem("IFRAME"))[0].contentWindow.document;  
+
+console.log("Inside Iframe")
+
+
+}
+else{
+    DOCUMENT=document
+    console.log("OutsideIfrmae")
+}
+SetFooter()
+
+function SetFooter(){
+    
+  if (!document.head.contains(document.getElementById("style_id"))) {
+    var css = `.my_foot {
+       position: fixed;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       height:auto;
+       background-color: #222533;
+       color: white;
+       font-weight: bold;
+       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+       z-index:9999;
+    }`,
+        head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style');
+    style.setAttribute("id","style_id")
+    head.appendChild(style);
+    
+    
+    style.type = 'text/css';
+    if (style.styleSheet){
+      // This is required for IE8 and below.
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+    }
+      var btn = document.createElement("DIV");
+      btn.innerText=" Object Picker ";
+      btn.setAttribute("class", "my_foot");
+      btn.setAttribute("id", "my_foot_id");
+      if(!document.body.contains(document.getElementById("my_foot_id"))){
+      document.body.appendChild(btn);
+      }
+    
+}
 function isClickable(e){
     if(e.tagName==="I"||e.tagName==="SPAN"||e.tagName==="BUTTON"||e.tagName==="A"||e.tagName==="LABEL"||e.tagName==="IMG"||e.tagName==="SVG"||e.tagName==="DIV"||e.type==="button"||e.type==="submit"||e.hasAttribute("onclick")){
 
@@ -111,12 +162,13 @@ function check_div(e){
     }
 
     function getPathToFailed(element) {
+        ///PXconsole.log("FAIL TITLE",DOCUMENT.title);
        
         
         if(element.id!==""){
             return "//*[@id='"+element.id+"']"
         }
-        if (element===document.body){
+        if (element===DOCUMENT.body){
         
             return element.tagName.toLowerCase();
         }
@@ -152,7 +204,7 @@ function check_div(e){
        
         
         
-        if (element===document.body){
+        if (element===DOCUMENT.body){
         
             return element.tagName.toLowerCase();
         }
@@ -210,7 +262,7 @@ function check_div(e){
     function getElementsByXPath(xpath, parent)
     {
         let results = [];
-        let query = document.evaluate(xpath, parent || document,
+        let query = DOCUMENT.evaluate(xpath, parent || DOCUMENT,
             null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         for (let i = 0, length = query.snapshotLength; i < length; ++i) {
             results.push(query.snapshotItem(i));
@@ -225,7 +277,7 @@ function check_div(e){
    
    var rejected_attributes=['style','align','allow','autocapitalize','autocomplete','autofocus','autoplay','bgcolor','border','buffered','charset','checked','color','cols','colspan','contenteditable','controls','crossorigin','decoding','disabled','download','draggable','hidden','spellcheck','tabindex','translate','height','maxlength','max','min','sandbox','rowspan','width','size','aria-haspopup','aria-expanded','aria-labelledby','aria-label','datetime','aria-hidden','focusable','data','data-ga','data-google-query-id','onclick','onabort', 'onautocomplete', 'onautocompleteerror', 'onblur', 'oncancel', 'oncanplay', 'oncanplaythrough', 'onchange', 'onclick', 'onclose', 'oncontextmenu', 'oncuechange', 'ondblclick', 'ondrag', 'ondragend', 'ondragenter', 'ondragexit', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'ondurationchange', 'onemptied', 'onended', 'onerror', 'onfocus', 'oninput', 'oninvalid', 'onkeydown', 'onkeypress', 'onkeyup', 'onload', 'onloadeddata', 'onloadedmetadata', 'onloadstart', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onpause', 'onplay', 'onplaying', 'onprogress', 'onratechange', 'onreset', 'onresize', 'onscroll', 'onseeked', 'onseeking', 'onselect', 'onshow', 'onsort', 'onstalled', 'onsubmit', 'onsuspend', 'ontimeupdate', 'ontoggle', 'onvolumechange', 'onwaiting','d','title'];
 
-var elements=document.body.getElementsByTagName("*");
+var elements=DOCUMENT.body.getElementsByTagName("*");
     for(e=0;e<elements.length;e++){
             var el=elements[e];
         for (var i = 0, atts = el.attributes, n = atts.length, arr = []; i < n; i++){
@@ -408,6 +460,7 @@ var inde=0;
             }
             else{
                 PX=getPathToFailed(elements[e])
+                //console.log("PX",PX)
                 if(PX.startsWith("html")){
                     
                     var X=PX;
@@ -426,14 +479,19 @@ var inde=0;
 
 
                 }
+                
 
                 else{
+
                     
                     var PARENT_ABS=PX.split("']")[0]+"']"
                     var PARENT_ABSO=X.split("']")[0]+"']"
                     var MERGED=PARENT_ABS+PARENT_ABSO
                     console.log("PFailed Initiallly",MERGED)
+                    
+                  
                     locator=getElementsByXPath(MERGED);
+                   console.log(locator.length)
                     
                         for(l=0;l<locator.length;l++){
                             if(locator[l]===elements[e]){
@@ -500,29 +558,23 @@ var inde=0;
     return ALL;
 }
 //############################END#########################################///
-function getDomPath(el) {
-
-
-    var html=`   <ul class="tree">
+function getDomPath(el,Xpath) {
+   var P= sessionStorage.getItem("IFRAME")?`Iframe-`+sessionStorage.getItem("IFRAME_NAME"):`Page-`+DOCUMENT.title.substring(0,40);
+   var B= sessionStorage.getItem("IFRAME")?`Browser-`+sessionStorage.getItem("IFRAME_WEB"):`Browser-`+DOCUMENT.title.substring(0,40);
+   var Iframe_Xpath= sessionStorage.getItem("IFRAME")?sessionStorage.getItem("IFRAME"):" ..."
+    var html=`<h5 align="center"><b>Object Hierarchy</b></h5> <div style="color:#FF1493">  <ul class="tree">
     <li>
       <input type="checkbox" checked="checked" id="c1" />
-      <label class="tree_label" for="c1"><i class="fa fa-globe"></i> Browser-`+document.title.substring(0,40)+`</label>
+      <label class="tree_label" for="c1"><i class="fa fa-globe"></i>`+B+`</label>
       <ul>
         <li>
           <input type="checkbox" checked="checked" id="c2" />
-          <label class="tree_label" for="c2"><i class="fa fa-file"></i> Page-`+document.title.substring(0,40)+`</label>
-          <ul>
-        <li>
-          <input type="checkbox" checked="checked" id="c3" />
-          <label class="tree_label" for="c3">...</label>
-          <ul>
-        <li>
-          <input type="checkbox" checked="checked" id="c4" />
-          <label class="tree_label" for="c4">`+el.parentNode.parentNode.tagName.toLowerCase()+"-"+ObjectGen(el.parentNode.parentNode)+`</label>
+          
+          <label class="tree_label" for="c2"><i class="fa fa-file"></i>`+P+` </label>
           <ul>
           <li>
             <input type="checkbox" checked="checked" id="c5" />
-            <label for="c5" class="tree_label">`+el.parentNode.tagName.toLowerCase()+"-"+ObjectGen(el.parentNode)+`</label>
+            <label for="c5" class="tree_label">Parent-`+ObjectGen(el.parentNode)+`</label>
             <ul>
               <li><span class="tree_label"><i class="fa fa-pencil"></i> WebElement-`+ObjectGen(el)+`</span></li>
             
@@ -531,20 +583,6 @@ function getDomPath(el) {
          
         
         </ul>
-
-        </li>
-
-
-
-      </ul>
-
-
-
-        </li>
-
-
-
-      </ul>
 
 
 
@@ -558,6 +596,37 @@ function getDomPath(el) {
     
    
   </ul>
+  </div>
+    `
+
+
+    html+=`<hr><h5 align="center"><b>Xpath Hierarchy</b></h5> <div style="color:#6A55C2">  <ul class="tree">
+    <li>
+      <input type="checkbox" checked="checked" id="c1" />
+      <label class="tree_label" for="c1"><i class="fa fa-globe"></i>`+B+`</label>
+      <ul>
+        <li>
+          <input type="checkbox" checked="checked" id="c2" />
+          
+          <label class="tree_label" for="c2"> `+Iframe_Xpath+` </label>
+          <ul>
+              <li><span class="tree_label"> `+Xpath+`</span></li>
+            
+            </ul>
+
+
+
+        </li>
+
+
+
+      </ul>
+    </li>
+    
+    
+   
+  </ul>
+  </div>
     `
    return html;
   }
@@ -579,7 +648,7 @@ data["VALUES"]=values;
 var data=GetStyles(el,data);
 data=getOperation(el,data);
 
-data["HIERARCHY"]=getDomPath(el);
+data["HIERARCHY"]=getDomPath(el,data["XPATH"]);
 return data;
 }
 function GetStyles(el,data){
@@ -627,18 +696,56 @@ function getOperation(el,data){
 
 
 var elem='';
-document.body.addEventListener("click", ClickListenner);
+DOCUMENT.body.addEventListener("click", ClickListenner);
 
-document.body.addEventListener('mouseover', MouseInListenerFunction,true);
-    document.body.addEventListener('mouseout', MouseOutListenerFunction,true);
+DOCUMENT.body.addEventListener('mouseover', MouseInListenerFunction,true);
+    DOCUMENT.body.addEventListener('mouseout', MouseOutListenerFunction,true);
 
 
     function MouseInListenerFunction(event){
+       if(event.target.tagName==="IFRAME"){
+
+        event.target.contentWindow.document.body.addEventListener("click", ClickListenner);
+
+        event.target.contentWindow.document.body.addEventListener('mouseover', MouseInListenerFunction,true);
+        event.target.contentWindow.document.body.addEventListener('mouseout', MouseOutListenerFunction,true);
+
+        sessionStorage.setItem("IFRAME", getPathTo(event.target));
+        sessionStorage.setItem("IFRAME_NAME", ObjectGen(event.target));
+        sessionStorage.setItem("IFRAME_WEB", DOCUMENT.title.substring(0,70));
+  
+
+
+       }
         event.target.style.border = '0.2em solid #0066cc';
+        var FOOT="<p><b>Object: </b>"+ObjectGen(event.target)+" <b>Absolute Xpath: </b>"+getPathTo(event.target);
+        var el=event.target;
+        for (var att, i = 0, atts = el.attributes, n = atts.length; i < n; i++){
+            att = atts[i];
+            
+            FOOT+=" <b>"+att.nodeName+": </b> "+att.nodeValue
+            
+        }
+        FOOT+="</p>"
+        
+        document.getElementById("my_foot_id").innerHTML=FOOT
      
         
         }
         function MouseOutListenerFunction(event){
+            if(event.target.tagName==="IFRAME"){
+
+                event.target.contentWindow.document.body.removeEventListener("click", ClickListenner);
+        
+                event.target.contentWindow.document.body.removeEventListener('mouseover', MouseInListenerFunction,true);
+                event.target.contentWindow.document.body.removeEventListener('mouseout', MouseOutListenerFunction,true);
+        
+        
+                sessionStorage.setItem("IFRAME", "");
+                sessionStorage.setItem("IFRAME_NAME", "");
+                sessionStorage.setItem("IFRAME_WEB", "");
+        
+               }
             event.target.style.border = '';
            
             }
@@ -650,7 +757,7 @@ function ClickListenner(event){
         var Xpath=Main(event.target);
      
       
-
+console.log("Xpath:::",Xpath[0])
 
    var data=Xpath[0]
 var data=GetNodesvalues(event.target,data);
@@ -694,6 +801,7 @@ else{
 
 
     var X=sessionStorage.getItem("element");
+    console.log("XX",X)
     if (X){
     sessionStorage.setItem("element", "");
     }

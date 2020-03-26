@@ -1,11 +1,16 @@
 body {
 	margin: 0;
-	background: url(/static/image/sativa.png) repeat fixed;
+	background: url(/static/image/sativa2.png) repeat fixed;
 	
     -webkit-font-smoothing: antialiased !important;
     font-family: 'candara';
 	
   }
+  option {
+    font-family: FontAwesome;
+    font-weight: 900;
+  }
+ 
   .brand{
 	float: left;
 	margin:5px;
@@ -44,7 +49,7 @@ body {
 	overflow: hidden;
   background-color: #222533;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 2px 4px 8px rgba(0, 0, 0, 0.28);
-  z-index: 9999;
+  z-index: 1000;
 
   }
   
@@ -64,7 +69,7 @@ body {
   }
   
   .sticky + .content {
-	padding-top: 60px;
+	padding-top: 80px;
   }
 
  
@@ -147,18 +152,66 @@ body {
 #myBtn:hover {
   background-color: #d0d0d0;
 }
-
-.card {
+.card2 {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 100%;
   margin: 10px;
+  height:250px;
+  background: white;
+  height:auto; overflow:auto
   
+}
+
+.card2:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.form-group {
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 0;
+}
+.card3 {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+  margin: 10px;
+ 
+  background: white;
+  height:auto; overflow:auto
+  
+}
+
+.card3:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card2_3 {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+  margin: 10px;
+ height: 150px;
+  background: white;
+  
+}
+
+.card2_3:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+  padding-bottom: 20px;
+  margin-left: 20px;
+ 
   background: white;
 
   
 }
-.card2 {
+.card5 {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 100%;
@@ -201,6 +254,7 @@ body {
   overflow: hidden;
   border: 1px solid #ccc;
   background:linear-gradient(90deg, #0d274c, #1c53a3);
+  color:white;
 }
 
 /* Style the buttons inside the tab */
@@ -360,12 +414,7 @@ label.tree_label:after { border-bottom: 0; }
 }
 
 
-#Tokyo{
-  color:#FF1493;
 
-
-
-}
 .card-footer {
   background: #4e505b;
   color:white;
@@ -405,17 +454,12 @@ label.tree_label:after { border-bottom: 0; }
     font-family: 'candara';
 }
 
-.active, .collapsible:hover {
+.collapsible:hover {
  font-size: 18px;
  color:white;
  background-color: #4e505b;
 }
-.sectionContent {
-  text-align: left;
-  margin:20px;
-  padding-left: 15px;
- 
-}
+
 #myInput {
   
  
@@ -543,4 +587,99 @@ label.tree_label:after { border-bottom: 0; }
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+
+ #myUL {
+  list-style-type: none;
+}
+#mylist {
+  padding: 0;
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+.caret2 {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret2::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret2-down::before {
+  
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+@keyframes spinner {
+  100% {
+    transform: rotate(3600deg);
+  }
+}
+#button {
+  display: inline-block;
+  background-color: #222533;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#button::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#button:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#button:active {
+  background-color: #555;
+}
+#button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Styles for the content section */
+#myInput {
+  background-image: url('/static/image/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
 }

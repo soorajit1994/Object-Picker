@@ -1,19 +1,22 @@
 <link rel="shortcut icon" href="/static/image/QICON.ico" type="image/x-icon" /> 
 
 
-<script src="/static/jquery-bootstrap/jquery.min.js"></script>
-<script src="/static/jquery-bootstrap/popper.js"></script>
-<script src="/static/jquery-bootstrap/bootstrap.min.js"></script>
-<script src="/static/jquery-bootstrap/notify.js"></script>
-<script src="/static/jquery-bootstrap/notify.min.js"></script>
+
 
 <link rel="stylesheet" type="text/css"  href="/static/recorder/recorder.css" >
-<script src="/static/jquery-bootstrap/less.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/static/jquery-bootstrap/notify.js"></script>
+<script src="/static/jquery-bootstrap/notify.min.js"></script>
+<link rel="stylesheet"  href="/static/jquery-bootstrap/w3.css" >
+<link rel="stylesheet" type="text/css" href="/static/filter/filter.css" >
+<script src="/static/jquery-bootstrap/codemirror.min.js"></script>
+<link rel="stylesheet"  href="/static/jquery-bootstrap/codemirror.css" >
+<script src="/static/mode/clike/clike.js"></script>
+<script src="/static/mode/gherkin/gherkin.js"></script>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -24,7 +27,7 @@
      Object Picker
     </title>
     <body>
-        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class='fa fa-sort-up' style='font-size:40px'></i></button>
+      <a id="button"></a>
         <iframe id="my_iframe" style="display:none;"></iframe>
 <div id="navbar">
         <span class="brand" style="color:white; margin:20px;	font-family: 'candara';font-weight: 900;"><a class="logo"><i class="fa fa-recycle"></i></a> OBJECT PICKER   </span>
@@ -45,113 +48,199 @@
      
       <div>
         <div class="sidenav">
-          <a href="#" title="Launch Browser" class="google" onclick='Launch();'><i class="fa fa-rocket"></i></a> 
-          <a href="#" title="Clear All"  class="facebook" onclick='EraseRec();'><i class="fa fa-eraser"></i></a> 
+          
+          <a href="#" title="Clear All"  class="google" onclick='EraseRec();'><i class="fa fa-eraser"></i></a> 
           <a href="#" title="Save as Excel"  class="twitter" onclick='downloadCSVRec({ filename: "Recorded.csv" });'><i class="fa fa-file-excel-o"></i></a> 
-          <a href="#" title="Pick All" style="background:#F98E33;color: white;" onclick='GetAll()'><i class="fa fa-list"></i></a> 
+         
           <a style="       
           background:#6A55C2;color: white; " href="#" title="Configurations" ><i class="fa fa-cog"></i></a> 
         </div>
 
       <div class="content">
        
-        <div style="margin-left: 160px;margin-right: 160px; /* Same as the width of the sidenav */display:flex;flex-direction: row;">
+        <div style="margin-left: 160px;margin-right: 160px; display:flex;flex-direction: row;">
           <div id="loader" class="loading">Loading&#8230;</div>
-    <div class="card">
-      <div class="tab">
-        <button class="tablinks" ><b>Picked Objects</b></button> </div>
+
+
+          <div>
+            <div class="card2">
+                
+                <div style="justify-content: center;" >
+                  <div class="tab">
+                    <button class="tablinks" ><b>Collect Objects</b></button> </div>
+                  <br>
+                 
+                  <div id="GEN_PL"class="form-group">
+                     
+                      <div class="col-lg-10">
+                          <input id="URL" name="url"  type="url" placeholder="Enter URL" class="form-control" pattern="https://.*" required >
+    </div>
+    </div>
+    <hr>
     
-        <div style="margin:10px; height:400px;overflow-y:scroll;">
+    
+    <div id="GEN_PL"class="form-group">
+                     
+        <div class="col-lg-10">
+            <select class="form-control" style="font-family: FontAwesome;
+            font-weight: 900;">
+                <option value="audi"><---SELECT BROWSER---></option>
+                <option value="volvo">&#xf268;  Chrome</option>
+                <option value="saab">&#xf269;   FireFox</option>
+                <option value="opel">&#xf267;   Safari</option>
+                
+              </select>
+    </div>
+    </div>
+    
+    <hr>
+    <button id="collect" type="button" class="btn btn-primary" style=" background:#1c53a3;border-color: #0d274c;border: 1px solid transparent; float:right;margin:15px;position:relative;font-size: 18px;" onclick="GetAll()" >Collect</button>
+    <button id="launch" type="button" class="btn btn-primary" style="background:#1c53a3;border-color: #0d274c;border: 1px solid transparent;  float:left;margin:15px;position:relative;font-size: 18px;" onclick="Launch()">Launch</button>
+                </div>
+              </div>
+             
+          <div class="card2_3">
+              <div id="locact" style="justify-content: center;">
+                <div style="text-align:left;">
+                  <h4 style="color:#1c53a3;vertical-align: middle;text-align: center;"> <strong><i class="fa fa-code"></i>  Class</strong></h4> </div>
+                  <hr>
+                  
+              <label  style="margin:10px;"  > <input id="PAGELOCATOR" type="checkbox" value="PAGELOCATOR" checked/>Page Locator  </label>
+              <label  style="margin:10px;" > <input id="PAGEACTION" type="checkbox" value="PAGEACTION"  checked/>Page Action  </label>
+              <div style="padding-left: 15px;">
+                  <button id="proceed" style="background:#1c53a3;border-color: #0d274c;border: 1px solid transparent; width:300px;"type="button" class="btn btn-primary">Proceed</button>
+        
+                </div>
+            </div>
+    
+          </div>
+            <div class="card3">
+                
+                <div style="justify-content: center;" >
+                  <div style="text-align:left;">
+                  <h4 style="color:#1c53a3;vertical-align: middle;text-align: center;"> <strong><i class="fa fa-filter"></i>  Filter</strong></h4> </div>
+                  <hr>
+                  <br>
+                 
+                  <div id="GEN_PL"class="form-group">
+                     
+                      <div class="col-lg-10">
+                          <label  ><input onchange="checkAll(this)" name="chk[]" type="checkbox"  />Select All  </label>
+                         
+                         
+    
+    </div>
+    </div>
+    <div id="GEN_PL"class="form-group">
+                     
+        <div class="col-lg-10">
+            <label  ><input  onchange="checkAllContents(this)" name="chk[]" type="checkbox"  />Contents Only  </label>
+           
+           
+    
+    </div>
+    </div>
+    <hr>
+    
+    
+    <div id="GEN_PL"class="form-group">
+                     
+        <div class="col-lg-10">
+            <ul id="myUL" >
+                <li><span class="caret2">Common Tags</span>
+                  <div id="demo"></div>
+                  <ul  id="filterControls" class="nested" >
+                    <li> <label  > <input type="checkbox"  value="DIV" />Div  </label></li>
+                    <li><label  > <input type="checkbox"  value="A" />Anchor  </label></li>
+                    <li><label  > <input type="checkbox"  value="BUTTON" />Button  </label></li>
+                    <li><label  > <input type="checkbox"  value="INPUT" />Input  </label></li>
+                    <li><label > <input type="checkbox"  value="SPAN" />Span  </label></li>
+                    <li><label  > <input type="checkbox"  value="CHECKBOX" />Checkbox  </label></li>
+                    <li><label  > <input type="checkbox"  value="RADIO" />Radiobutton  </label></li>
+                    <li><label  > <input type="checkbox"  value="IMG" />Image  </label></li>
+                    <li><label  > <input type="checkbox"  value="CANVAS" />Canvas  </label></li>
+                    <li><label  > <input type="checkbox"  value="TEXTAREA" /> Textarea </label></li>
+                    <li><span class="caret2">Style Tags</span>
+                      <ul  id="filterControls" class="nested">
+                        <li> <label  > <input type="checkbox" name="vehicle1" value="STRONG" />Strong  </label></li>
+                        <li><label  > <input type="checkbox" name="vehicle1" value="B" />Bold  </label></li>
+                        <li><label  > <input type="checkbox" name="vehicle1" value="I" />Italic  </label></li>
+                        <li><label  > <input type="checkbox" name="vehicle1" value="EM" /> Emphasis   </label></li>
+                        
+                         
+                      </ul>
+                    </li>
+                    <li><span class="caret2">Content Tags</span>
+                      <ul  id="filterControls" class="nested">
+                        <li> <label  > <input type="checkbox"  value="P" />Paragraphs  </label></li>
+                        <li><label   > <input type="checkbox"  value="LABEL" />Label</Label></li>
+                          <li> <label  > <input type="checkbox"  value="PRE" />PRE  </label></li>
+                        <li><span class="caret2">Headers</span>
+                          <ul class="nested">
+                            <li><label > <input type="checkbox" value="H1" />H1  </label></li>
+                            <li><label  > <input type="checkbox"  value="H2" />H2 </label></li>
+                            <li><label  > <input type="checkbox"  value="H3" />H3 </label></li>
+                            <li><label > <input type="checkbox"  value="H4" />H4 </label></li>
+                            <li><label  > <input type="checkbox"  value="H5" />H5 </label></li>
+                            <li><label  > <input type="checkbox"  value="H6" />H6 </label></li></ul></li>
+                            <li><label  > <input type="checkbox" value="TD" />TD</Label></li>
+                              <li><label   > <input type="checkbox"  value="TR" />TR</Label></li>
+                                <li><label > <input type="checkbox" value="TH" />TH</Label></li>
+                                  <li><label  > <input type="checkbox"  value="LI" />LI</Label></li>
+                                    <li><label  > <input type="checkbox" value="OPTION" />Option</Label></li>
+                         
+                      </ul>
+                    </li>
+                     
+                  </ul>
+                </li>
+              </ul>
+    </div>
+    </div>
+    
+    <hr>
+    
+    
+    
+                </div>
+              </div>
+            
+    
+            </div>
+            <div style=" position: relative;
+            left:10px;
+            width:900px;
+            
+            
+            top:10px;">
+    <div  class="card">
+      <div id="tabhead" class="tab">
+        <button class="tablinks" ><b>Instructions</b></button> </div>
+    
+        <div id="mainContainer2" style="margin:10px; ">
 
 
-
+          
+         
+          
           <ul id="mylist">
+
             <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-rocket"></i> <strong> Launch the browser and Go to URL.</strong></button></div></li>
             <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-list"></i><strong> Once Launched pick objects.</strong> </button></div></li>
             <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-file-excel-o"></i><strong> Save all objects as Excel. </strong> </button></div></li>
             <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-eraser"></i> <strong> Click on  Eraser to clear. </strong></button></div></li>
             
+            
           </ul>  
+        
         </div>
         
         </div>
+
+
     
-          <div class="card2">
-            <div class="tab">
-              <button id="prop" class="tablinks" onclick="openCity(event, 'London')"><b>Properties</b></button>
-              <button id="op" class="tablinks" onclick="openCity(event, 'Paris')"><b>CSS Properties</b></button>
-              <button id="Styles" class="tablinks" onclick="openCity(event, 'Kolkata')"><b>Operations</b></button>
-              <button id="hir" class="tablinks" onclick="openCity(event, 'Tokyo')"><b>Hierarchy</b></button>
-            
-            </div>
-            <div id="stick">
-          
-          
-          <div id="London" class="tabcontent">
-            <table id="myTable" class="table">
-              <thead>
-                <tr>
-                  <th>Properties</th>
-                  <th>Values</th>
-                
-                </tr>
-              </thead>
-              <tbody id="PROP">
-                
-               
-              </tbody>
-            </table>
-          </div>
-          
-          <div id="Paris" class="tabcontent">
-            <table id="myTable2" class="table">
-              <thead>
-                <tr>
-                  <th>CSS Properties</th>
-                  <th>Values</th>
-                  
-                
-                </tr>
-              </thead>
-              <tbody id="CSS">
-                
-              
-               
-              </tbody>
-            </table>
+      </div>
          
-          </div>
-          <div id="Kolkata" class="tabcontent">
-            <table id="myTable3" class="table">
-              <thead>
-                <tr>
-                  <th>Operations</th>
-                  <th>Descriptions</th>
-                
-                </tr>
-              </thead>
-              <tbody id="OPP">
-                <tr>
-                  
-     
-                 
-                </tr>
-              
-               
-              </tbody>
-            </table>
-         
-          </div>
-          
-          <div id="Tokyo" class="tabcontent">
-           
-            
-            </div>
-          </div>
-            <div id="card-footer" style="display:none;" class="card-footer">
-             
-            </div>
-        </div>
 
 
 
@@ -167,6 +256,101 @@
             
         </div>
       </div>
+           <!-- Property Modal Modal -->
+  <div class="modal fade" id="modal_click_property" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Property Details</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body">
+          
+
+          <div class="tab">
+            <button id="prop" class="tablinks" onclick="openCity(event, 'London')"><b>Properties</b></button>
+            <button id="op" class="tablinks" onclick="openCity(event, 'Paris')"><b>CSS Properties</b></button>
+            <button id="Styles" class="tablinks" onclick="openCity(event, 'Kolkata')"><b>Operations</b></button>
+            <button id="hir" class="tablinks" onclick="openCity(event, 'Tokyo')"><b>Hierarchy</b></button>
+          
+          </div>
+          <div id="stick">
+        
+        
+        <div id="London" class="tabcontent">
+          <table id="myTable" class="table">
+            <thead>
+              <tr>
+                <th>Properties</th>
+                <th>Values</th>
+              
+              </tr>
+            </thead>
+            <tbody id="PROP">
+              
+             
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="Paris" class="tabcontent">
+          <table id="myTable2" class="table">
+            <thead>
+              <tr>
+                <th>CSS Properties</th>
+                <th>Values</th>
+                
+              
+              </tr>
+            </thead>
+            <tbody id="CSS">
+              
+            
+             
+            </tbody>
+          </table>
+       
+        </div>
+        <div id="Kolkata" class="tabcontent">
+          <table id="myTable3" class="table">
+            <thead>
+              <tr>
+                <th>Operations</th>
+                <th>Descriptions</th>
+              
+              </tr>
+            </thead>
+            <tbody id="OPP">
+              <tr>
+                
+   
+               
+              </tr>
+            
+             
+            </tbody>
+          </table>
+       
+        </div>
+        
+        <div id="Tokyo" class="tabcontent">
+         
+          
+          </div>
+        </div>
+          <div id="card-footer" style="display:none;" class="card-footer">
+           
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
         </body>
 </html>
 
@@ -174,3 +358,8 @@
 
 
 <script type="text/javascript" src="/static/recorder/recorder.js"></script>
+<script type="text/javascript" src="/static/recorder/loc_act.js"></script>
+<script type="text/javascript" src="/static/filter/filter.js"></script>
+<script>
+
+</script>

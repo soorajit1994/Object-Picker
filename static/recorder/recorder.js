@@ -16,6 +16,9 @@ function containsObject(obj, list) {
 
   return false;
 }
+function htmlEntities(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 ////$('#Paris').click()
 $('#stop').hide();
 var watch = (function(){
@@ -51,7 +54,7 @@ var watch = (function(){
          }, function(data) {
           if(data.status==="FAIL"){
             
-            alert("Error: Driver is not initialized");
+            $.notify("Error: Driver is not initialized","error");
       
             clearTimeout(t);
         timer.textContent = time;
@@ -74,25 +77,33 @@ var watch = (function(){
           xpath_data.push(JSON.parse(data.data));
         }
     
-      console.log(xpath_data);
-      listss+=`<div style='margin:5px;'><label >About `+String(xpath_data.length)+` results</label><input style="margin:5px" placeholder="Search for objects.." type="text" id="myInput" onkeyup="searchFunction()" /></div><hr>`;
-        for(var k=0;k<xpath_data.length;k++){
-          var TXT=''
-          xpath_data[k]['TEXT'].trim()===""?TXT=xpath_data[k]['OBJ']:TXT=xpath_data[k]['TEXT'];
-          if(TXT.length>70){
-            TXT=TXT.substring(0,70)+"..."
-          }
-          listss+=`<li><div class='sectionContent'><button type='button' onclick="showDetails(`+k+`);" class='collapsible'><strong>`+TXT+`<i style="float:right" class="fa fa-angle-right"></i></strong></button></div></li>`;
-  
-          
-  
-  
-        
+        var TAB=`<div id="tabhead" class="tab">
+        <button class="tablinks" ><b>Objects</b></button> </div>`;
+       $( "#tabhead" ).replaceWith( TAB);
+       listss+=`<div style='margin:5px;'><label >About `+String(xpath_data.length)+` results</label><input style="margin:5px" placeholder="Search for objects.." type="text" id="myInput" onkeyup="searchFunction()" /></div>`;
+       listss+=`<ul id="mylist">`
+       for(var k=0;k<xpath_data.length;k++){
+         var TXT=''
+         xpath_data[k]['TEXT'].trim()===""?TXT=xpath_data[k]['OBJ']:TXT=xpath_data[k]['TEXT'];
+         if(TXT.length>70){
+           TXT=TXT.substring(0,70)+"..."
+         }
+         listss+=`<li><div class='sectionContent `+xpath_data[k]['TAG']+`'><input id="CHECK_ELE" type="checkbox" name="Ele_value" value="`+xpath_data[k]['XPATH']+`" rel2="`+xpath_data[k]['TAG']+`" rel3="`+xpath_data[k]['TEXT']+`" rel="`+xpath_data[k]['OBJ']+`" ><button type='button' onclick="showDetails(`+k+`);" class='collapsible2'><strong>`+htmlEntities(TXT)+`<i style="float:right" class="fa fa-angle-right"></i></strong></button></div></li>`;
+ 
+         
+ 
+ 
        
-      }
-     
-      document.getElementById("mylist").innerHTML=listss
-      showDetails(xpath_data.length-1);
+      
+     }
+     listss+="</ul>"
+    
+     document.getElementById("mainContainer2").innerHTML=listss
+     sections = $('.sectionContent');
+     updateContentVisibility();
+    
+     $('#proceed').prop('disabled', false);
+     //// showDetails(xpath_data.length-1);
       }
             
      
@@ -167,10 +178,7 @@ function myFunction() {
 }
 
 window.addEventListener("beforeunload", function (e) {
-    var confirmationMessage = "\o/";
-  
-    (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-    return confirmationMessage;                            //Webkit, Safari, Chrome
+    $("#stop").click()
   });
 
 
@@ -263,10 +271,20 @@ function downloadCSVRec(args) {
 
 
 // When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+var btn = $('#button');
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 300) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '300');
+});
 
 
 
@@ -371,7 +389,7 @@ function Launch(){
 
   $.getJSON('/launch', {
 				  
-    track:"Hello",
+    url:$('input[name=url]').val(),
  }, function(data) {
 
 console.log(data);
@@ -392,7 +410,7 @@ function CopyToClipboard(containerid) {
        range.selectNode(document.getElementById(containerid));
        window.getSelection().addRange(range);
        document.execCommand("copy");
-    alert("Xpath Copied to Clipboard"); 
+    $.notify("Xpath Copied to Clipboard","success"); 
   }}
 
 
@@ -405,7 +423,7 @@ function CopyToClipboard(containerid) {
    }, function(data) {
 
     if(data.status==="FAIL"){
-     alert("Error: Driver is not initialized");
+      $.notify("Error: Driver is not initialized","error");
      $("#loader").hide();
 
     }
@@ -426,14 +444,18 @@ function CopyToClipboard(containerid) {
             var listss=''
    
     if(xpath_data!==null&&xpath_data.length!==0){
-      listss+=`<div style='margin:5px;'><label >About `+String(xpath_data.length)+` results</label><input style="margin:5px" placeholder="Search for objects.." type="text" id="myInput" onkeyup="searchFunction()" /></div><hr>`;
+       var TAB=`<div id="tabhead" class="tab">
+       <button class="tablinks" ><b>Objects</b></button> </div>`;
+      $( "#tabhead" ).replaceWith( TAB);
+      listss+=`<div style='margin:5px;'><label >About `+String(xpath_data.length)+` results</label><input style="margin:5px" placeholder="Search for objects.." type="text" id="myInput" onkeyup="searchFunction()" /></div>`;
+      listss+=`<ul id="mylist">`
       for(var k=0;k<xpath_data.length;k++){
         var TXT=''
         xpath_data[k]['TEXT'].trim()===""?TXT=xpath_data[k]['OBJ']:TXT=xpath_data[k]['TEXT'];
         if(TXT.length>70){
           TXT=TXT.substring(0,70)+"..."
         }
-        listss+=`<li><div class='sectionContent'><button type='button' onclick="showDetails(`+k+`);" class='collapsible'><strong>`+TXT+`<i style="float:right" class="fa fa-angle-right"></i></strong></button></div></li>`;
+        listss+=`<li><div class='sectionContent `+xpath_data[k]['TAG']+`'><input id="CHECK_ELE" type="checkbox" name="Ele_value" value="`+xpath_data[k]['XPATH']+`" rel2="`+xpath_data[k]['TAG']+`" rel3="`+xpath_data[k]['TEXT']+`" rel="`+xpath_data[k]['OBJ']+`" ><button type='button' onclick="showDetails(`+k+`);" class='collapsible2'><strong>`+TXT+`<i style="float:right" class="fa fa-angle-right"></i></strong></button></div></li>`;
 
         
 
@@ -441,10 +463,14 @@ function CopyToClipboard(containerid) {
       
      
     }
+    listss+="</ul>"
    
-    document.getElementById("mylist").innerHTML=listss
+    document.getElementById("mainContainer2").innerHTML=listss
+    sections = $('.sectionContent');
+    updateContentVisibility();
     $("#loader").hide();
-    showDetails(xpath_data.length-1);
+    $('#proceed').prop('disabled', false);
+  ////  showDetails(xpath_data.length-1);
     }
   }
    });
@@ -454,7 +480,7 @@ function CopyToClipboard(containerid) {
 
   function showDetails(x){
 
-
+    $('#modal_click_property').modal('show'); 
 
 var row_data=xpath_data[x];
 var node_html=''
@@ -491,15 +517,19 @@ for(var t=0;t<row_data["NODES"].length;t++){
       }
       row3.innerHTML=op_html;
     document.getElementById("Tokyo").innerHTML=row_data["HIERARCHY"];
-    document.getElementById("card-footer").innerHTML="<p >Relative Xpath: <span id='div1' >"+row_data["XPATH"]+"</span><a id='copy' title='Copy Xpath to Clipboard' href='#'><i style='font-size:20px;float:right;color:white;' class='fa fa-clipboard' ></i></a> </p>";
+    document.getElementById("card-footer").innerHTML="<p >Relative Xpath: <span id='div1' >"+row_data["XPATH"]+"</span><a  id='locate' onclick='Locate();' title='Locate element on Page' href='#' style='margin:5px;font-size:20px;float:right;color:white;'>   <i  class='fa fa-eye' ></i></a><a style='margin:5px;font-size:20px;float:right;color:white;' id='copy' title='Copy Xpath to Clipboard' href='#'><i  class='fa fa-clipboard' ></i></a> </p>";
     $("#card-footer").fadeIn();
     var myEl = document.getElementById('copy');
-
+    
     myEl.addEventListener('click', function() {
       CopyToClipboard('div1');
     }, false);
 
+  
+    
+
   }
+  
 
   function searchFunction() {
     var input, filter, ul, li, a, i, txtValue;
@@ -517,3 +547,32 @@ for(var t=0;t<row_data["NODES"].length;t++){
         }
     }
 }
+
+var toggler = document.getElementsByClassName("caret2");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+  toggler[i].addEventListener("click", function() {
+    this.parentElement.querySelector(".nested").classList.toggle("active");
+    this.classList.toggle("caret2-down");
+  });
+}
+
+
+function Locate(){
+ 
+  var x=document.getElementById("div1").innerText;
+  
+console.log(x);
+$.getJSON('/locate', {
+  xpath:x,
+  }, function(data) {
+
+    if(data.status==="FAIL"){
+      $.notify("Failed to locate the element", "warn");
+
+    }
+
+
+  });
+ }
