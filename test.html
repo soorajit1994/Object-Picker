@@ -1,35 +1,45 @@
-import selenium
-
-from selenium import webdriver  # Import from seleniumwire
-
-driver=webdriver.Ie()
-Collct_tags_attributes='''
-var attributes = [];
-var tags = [];
-var rejected_tags = ['SCRIPT', 'STYLE', 'NOSCRIPT', 'NOFRAME', 'TRACK', 'VIDEO', 'FONT', 'EVENTSOURCE', 'RECT', 'PATH', 'path', 'circle'];
-var rejected_attributes = ['style', 'align', 'allow', 'autocapitalize', 'autocomplete', 'autofocus', 'autoplay', 'bgcolor', 'border', 'buffered', 'charset', 'checked', 'color', 'cols', 'colspan', 'contenteditable', 'controls', 'crossorigin', 'decoding', 'disabled', 'download', 'draggable', 'hidden', 'spellcheck', 'tabindex', 'translate', 'height', 'maxlength', 'max', 'min', 'sandbox', 'rowspan', 'width', 'size', 'aria-haspopup', 'aria-expanded', 'aria-labelledby', 'aria-label', 'datetime', 'aria-hidden', 'focusable', 'id', 'class', 'd'];
-var rejected_event_attributes = [];
-var elements=document.body.getElementsByTagName("*");
- for (var e = 0; e < elements.length; e++) {
-    var el = elements[e];
-
-    for (var i = 0, atts = el.attributes, n = atts.length, arr = []; i < n; i++) {
-      if (!rejected_attributes.includes(atts[i].nodeName) && !rejected_event_attributes.includes(atts[i].nodeName) && !/^\d+$/.test(atts[i].nodeValue) && atts[i].nodeValue !== 'true' && atts[i].nodeValue !== 'false' && atts[i].nodeValue.toLowerCase !== 'both' && !attributes.includes(atts[i].nodeName) && atts[i].nodeValue.length < 60 && atts[i].nodeValue.trim() !== "") {
-        attributes.push(atts[i].nodeName);
-      }
-    }
-
-    var tag = el.tagName;
-
-    if (!rejected_tags.includes(tag) && !tags.includes(tag)) {
-      tags.push(tag);
-    }
-  }
-
-  attributes.unshift("id", "class");
-  console.log(attributes, tags); 
-return {"tags":tags,"attributes":attributes}
-'''
-driver.get("https://google.com")
-tags_attributes=driver.execute_script(Collct_tags_attributes)
-print(tags_attributes)
+function getDomPath(el, Xpath) {
+  var P = Iframe_Xpath !== "" ? 'Iframe-' + Iframe_name : 'Page-' + DOCUMENT.title.substring(0, 40);
+  var B = Iframe_Xpath !== "" ? 'Browser-' + Iframe_web : 'Browser-' + DOCUMENT.title.substring(0, 40);
+  var Iframe_Xpath2 = Iframe_Xpath !== "" ? Iframe_Xpath : " ...";
+  var html = '<h5 align="center"><b>Object Hierarchy</b></h5> <div style="color:#FF1493">  <ul class="tree">\
+    <li>\
+      <input type="checkbox" checked="checked" id="c1" />\
+      <label class="tree_label" for="c1"><i class="fa fa-globe"></i>' + B + '</label>\
+      <ul>\
+        <li>\
+          <input type="checkbox" checked="checked" id="c2" />\
+           <label class="tree_label" for="c2"><i class="fa fa-file"></i>' + P + ' </label>\
+          <ul>\
+          <li>\
+            <input type="checkbox" checked="checked" id="c5" />\
+            <label for="c5" class="tree_label">Parent-' + ObjectGen(el.parentNode) + '</label>\
+            <ul>\
+              <li><span class="tree_label"><i class="fa fa-pencil"></i> WebElement-' + ObjectGen(el) + '</span></li>\
+             </ul>\
+          </li>\
+          </ul>\
+ </li>\
+ </ul>\
+ </li>\
+ </ul>\
+  </div>\
+    ';
+  html += '<hr><h5 align="center"><b>Xpath Hierarchy</b></h5> <div style="color:#6A55C2">  <ul class="tree">\
+    <li>\
+      <input type="checkbox" checked="checked" id="c1" />\
+      <label class="tree_label" for="c1"><i class="fa fa-globe"></i>' + B + '</label>\
+      <ul>\
+        <li>\
+          <input type="checkbox" checked="checked" id="c2" />\
+           <label class="tree_label" for="c2"> ' + Iframe_Xpath2 + ' </label>\
+          <ul>\
+              <li><span class="tree_label"> ' + Xpath + '</span></li>\
+             </ul>\
+ </li>\
+</ul>\
+    </li>\
+    </ul> </div>\
+    ';
+  return html;
+}
