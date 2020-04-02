@@ -1,13 +1,16 @@
+"use strict";
+
 if (!String.prototype.endsWith) {
-  String.prototype.endsWith = function(searchString, position) {
-      var subjectString = this.toString();
-      if (typeof position !== 'number' || !isFinite(position) 
-          || Math.floor(position) !== position || position > subjectString.length) {
-        position = subjectString.length;
-      }
-      position -= searchString.length;
-      var lastIndex = subjectString.indexOf(searchString, position);
-      return lastIndex !== -1 && lastIndex === position;
+  String.prototype.endsWith = function (searchString, position) {
+    var subjectString = this.toString();
+
+    if (typeof position !== 'number' || !isFinite(position) || Math.floor(position) !== position || position > subjectString.length) {
+      position = subjectString.length;
+    }
+
+    position -= searchString.length;
+    var lastIndex = subjectString.indexOf(searchString, position);
+    return lastIndex !== -1 && lastIndex === position;
   };
 }
 
@@ -289,7 +292,7 @@ function getPageXY(element) {
 
 function getElementsByXPath(xpath, parent) {
   var results = [];
-  console.log("DOCC",DOCUMENT.title,xpath)
+  console.log("DOCC", DOCUMENT.title, xpath);
   var query = DOCUMENT.evaluate(xpath, parent || DOCUMENT, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
   for (var _i = 0, length = query.snapshotLength; _i < length; ++_i) {
@@ -305,32 +308,33 @@ var ALL = [];
 var attributes = [];
 var tags = [];
 var attribute_list = [];
-var rejected_tags = ['SCRIPT', 'STYLE', 'NOSCRIPT', 'NOFRAME', 'TRACK', 'VIDEO', 'FONT', 'EVENTSOURCE', 'RECT', 'PATH', 'path', 'circle','TR','TBODY','TABLE','DIV','HR','SMALL','BR','LINK','OL'];
+var rejected_tags = ['SCRIPT', 'STYLE', 'NOSCRIPT', 'NOFRAME', 'TRACK', 'VIDEO', 'FONT', 'EVENTSOURCE', 'RECT', 'PATH', 'path', 'circle', 'TR', 'TBODY', 'TABLE', 'DIV', 'HR', 'SMALL', 'BR', 'LINK', 'OL'];
 var rejected_attributes = ['style', 'align', 'allow', 'autocapitalize', 'autocomplete', 'autofocus', 'autoplay', 'bgcolor', 'border', 'buffered', 'charset', 'checked', 'color', 'cols', 'colspan', 'contenteditable', 'controls', 'crossorigin', 'decoding', 'disabled', 'download', 'draggable', 'hidden', 'spellcheck', 'tabindex', 'translate', 'height', 'maxlength', 'max', 'min', 'sandbox', 'rowspan', 'width', 'size', 'aria-haspopup', 'aria-expanded', 'aria-labelledby', 'aria-label', 'datetime', 'aria-hidden', 'focusable', 'id', 'class', 'd'];
 var rejected_event_attributes = [];
+
 function includes(container, value) {
-	var returnValue = false;
-	var pos = container.indexOf(value);
-	if (pos >= 0) {
-		returnValue = true;
-	}
-	return returnValue;
+  var returnValue = false;
+  var pos = container.indexOf(value);
+
+  if (pos >= 0) {
+    returnValue = true;
+  }
+
+  return returnValue;
 }
+
 function Main(elements) {
   ////var elements=DOCUMENT.body.getElementsByTagName("*");
   for (var e = 0; e < elements.length; e++) {
     var el = elements[e];
-
-    
-
     var tag = el.tagName;
 
-    if (!includes(rejected_tags,tag) && !includes(tags,tag)) {
+    if (!includes(rejected_tags, tag) && !includes(tags, tag)) {
       tags.push(tag);
     }
   }
-attributes=["id","class","type","title","src","href","value","placeholder"];
-  
+
+  attributes = ["id", "class", "type", "title", "src", "href", "value", "placeholder"];
   console.log(attributes, tags); ////******************************/
 
   var results = 'False';
@@ -340,16 +344,19 @@ attributes=["id","class","type","title","src","href","value","placeholder"];
   var guessable_elements = tags;
   attribute_list = attributes;
   var elements = DOCUMENT.body.getElementsByTagName("*");
-console.log(elements.length)
+  console.log(elements.length);
+
   for (var e = 0; e < elements.length; e++) {
     try {
-      if (includes(guessable_elements,elements[e].tagName) && !elements[e].hasAttribute("type") || elements[e].hasAttribute("type") && elements[e].type !== "hidden" && elements[e].type !== "HIDDEN" && elements[e] !== null&&!includes(INSERTED_ELEMENTS,elements[e])) {
+      if (includes(guessable_elements, elements[e].tagName) && !elements[e].hasAttribute("type") || elements[e].hasAttribute("type") && elements[e].type !== "hidden" && elements[e].type !== "HIDDEN" && elements[e] !== null && !includes(INSERTED_ELEMENTS, elements[e])) {
         if (elements[e].tagName === "IFRAME") {
           Iframe_element.push(elements[e]);
         }
-       if(ALL.length===300){
-         return ALL;
-       }
+
+        if (ALL.length === 300) {
+          return ALL;
+        }
+
         for (attr = 0; attr < attribute_list.length; attr++) {
           ///console.log("ATTR",attribute_list[attr],elements[e].hasAttribute(attribute_list[attr]))
           if (elements[e].hasAttribute(attribute_list[attr])) {
@@ -367,32 +374,22 @@ console.log(elements.length)
                 break;
               }
             } ///console.log( getElementsByXPath(X) );
-            if (locator.length > 1){
-              for(l=0;l<locator.length;l++){
 
 
-                if(locator[l]==elements[e]){
-
-                  X="("+X+")"+"["+l+"]"
-                  var results='True';
+            if (locator.length > 1) {
+              for (l = 0; l < locator.length; l++) {
+                if (locator[l] == elements[e]) {
+                  X = "(" + X + ")" + "[" + l + "]";
+                  var results = 'True';
                   break;
-
-
-
-
                 }
-                
               }
-
-
-
             }
-
           }
         }
 
         if (results == 'True' && X !== '') {
-          if (!includes(INSERTED_ELEMENTS,elements[e])) {
+          if (!includes(INSERTED_ELEMENTS, elements[e])) {
             INSERTED_ELEMENTS.push(elements[e]);
             var Obj = elements[e].tagName.toLowerCase() + "_" + ObjectGen(elements[e]);
             var TAG = TagGen(elements[e]);
@@ -408,7 +405,7 @@ console.log(elements.length)
             results = 'False';
           }
         } else {
-        /// console.log(elements[e]);
+          /// console.log(elements[e]);
           var TEXT = check_div(elements[e]);
 
           if (TEXT.trim() !== "" && !isHidden(elements[e])) {
@@ -431,7 +428,7 @@ console.log(elements.length)
                   "TAG": TAG
                 };
 
-                if (!includes(INSERTED_ELEMENTS,elements[e])) {
+                if (!includes(INSERTED_ELEMENTS, elements[e])) {
                   Z = GetNodesvalues(elements[e], Z);
                   ALL.push(Z);
                   INSERTED_ELEMENTS.push(elements[e]);
@@ -458,7 +455,7 @@ console.log(elements.length)
                   "TAG": TAG
                 };
 
-                if (!includes(INSERTED_ELEMENTS,elements[e])) {
+                if (!includes(INSERTED_ELEMENTS, elements[e])) {
                   Z = GetNodesvalues(elements[e], Z);
                   ALL.push(Z);
                   INSERTED_ELEMENTS.push(elements[e]);
@@ -480,7 +477,7 @@ console.log(elements.length)
                   "TAG": TAG
                 };
 
-                if (!includes(INSERTED_ELEMENTS,elements[e])) {
+                if (!includes(INSERTED_ELEMENTS, elements[e])) {
                   Z = GetNodesvalues(elements[e], Z);
                   ALL.push(Z);
                   INSERTED_ELEMENTS.push(elements[e]);
@@ -505,7 +502,7 @@ console.log(elements.length)
                     "TAG": TAG
                   };
 
-                  if (!includes(INSERTED_ELEMENTS,locator[0])) {
+                  if (!includes(INSERTED_ELEMENTS, locator[0])) {
                     Z = GetNodesvalues(locator[0], Z);
                     ALL.push(Z);
                     INSERTED_ELEMENTS.push(locator[0]);
@@ -532,7 +529,7 @@ console.log(elements.length)
                     "TAG": TAG
                   };
 
-                  if (!includes(INSERTED_ELEMENTS,elements[e])) {
+                  if (!includes(INSERTED_ELEMENTS, elements[e])) {
                     Z = GetNodesvalues(elements[e], Z);
                     ALL.push(Z);
                     INSERTED_ELEMENTS.push(elements[e]);
@@ -547,7 +544,7 @@ console.log(elements.length)
         }
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   } ///    console.log(Iframe_element);
 
@@ -576,17 +573,12 @@ for (var k = 0; k < Iframe_element.length; k++) {
     var script_tag = DOCUMENT.createElement('script');
     script_tag.type = 'text/javascript';
     script_tag.text = ms;
-
     DOCUMENT.getElementsByTagName('head')[0].appendChild(script_tag);
-   
-      
-      Main(Iframe_element[k].contentWindow.document.body.getElementsByTagName("*"));
-   
-    
+    Main(Iframe_element[k].contentWindow.document.body.getElementsByTagName("*"));
   } catch (err) {
     console.log("Pass Iframe");
   }
 }
-console.log("Completed")
-console.log(ALL)
-return ALL;
+
+console.log("Completed");
+console.log(ALL); //return ALL;
