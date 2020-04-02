@@ -343,7 +343,7 @@ attributes=["id","class","type","title","src","href","value","placeholder"];
 console.log(elements.length)
   for (var e = 0; e < elements.length; e++) {
     try {
-      if (includes(guessable_elements,elements[e].tagName) && !elements[e].hasAttribute("type") || elements[e].hasAttribute("type") && elements[e].type !== "hidden" && elements[e].type !== "HIDDEN" && elements[e] !== null) {
+      if (includes(guessable_elements,elements[e].tagName) && !elements[e].hasAttribute("type") || elements[e].hasAttribute("type") && elements[e].type !== "hidden" && elements[e].type !== "HIDDEN" && elements[e] !== null&&!includes(INSERTED_ELEMENTS,elements[e])) {
         if (elements[e].tagName === "IFRAME") {
           Iframe_element.push(elements[e]);
         }
@@ -367,6 +367,26 @@ console.log(elements.length)
                 break;
               }
             } ///console.log( getElementsByXPath(X) );
+            if (locator.length > 1){
+              for(l=0;l<locator.length;l++){
+
+
+                if(locator[l]==elements[e]){
+
+                  X="("+X+")"+"["+l+"]"
+                  var results='True';
+                  break;
+
+
+
+
+                }
+                
+              }
+
+
+
+            }
 
           }
         }
@@ -388,7 +408,7 @@ console.log(elements.length)
             results = 'False';
           }
         } else {
-          ///console.log(elements[e]);
+        /// console.log(elements[e]);
           var TEXT = check_div(elements[e]);
 
           if (TEXT.trim() !== "" && !isHidden(elements[e])) {
