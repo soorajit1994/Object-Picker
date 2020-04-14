@@ -1,32 +1,28 @@
-def pageClassCreation(name,xpath):
-    
-    i = 0 
-    
-    L = "package pageobjects;\n" 
-    L+="import automation.library.selenium.core.Element;\n"
-    L+="import org.openqa.selenium.support.PageFactory;\n\n"
-    L+="public class pageClass extends BaseP0 {\n"
-    length = len(name)
-    while i < length:
-        variableName=name[i].replace(' ','_')
-        L+='\tprivate By '+variableName+' = '+'By.xpath("'+xpath[i]+'");\n'
-      
-        i = i + 1
-    L+="\n"
-    i=0
-    while i < length:
-        variableName=name[i].replace(' ','_')
+def locate_all_iframes(driver,xpath):
+    iframes = driver.find_elements_by_xpath("//iframe")
+    for index, iframe in enumerate(iframes):
         
-        L+="\tpublic Element " + variableName + "() throws IOException,InteruptedException\n\t{\n"
-        L+="\t\treturn $("+variableName+");\n\t}\n"
-        i = i + 1
-    
-    print(L)
-    return L
+        driver.switch_to.frame(index)
+        try:
+            element=driver.find_element_by_xpath(xpath)
+            driver.execute_script("arguments[0].style.border = '0.4em solid yellow';",element)
+        except:
+            pass
+        locate_all_iframes(driver,xpath)
+        driver.switch_to.parent_frame()    
 
-
-
-L3=PL_PA.pageClassCreation(name,xpath)
+def find_all_iframes(driver,Xpath,data):
+    iframes = driver.find_elements_by_xpath("//iframe")
+    for index, iframe in enumerate(iframes):
+        # Your sweet business logic applied to iframe goes here.
+        driver.switch_to.frame(index)
+        Xpath=driver.execute_script(open("recordJS2.js").read())
+        find_all_iframes(driver,Xpath,data)
+        driver.switch_to.parent_frame()
+    return Xpath,data
+if  Xpath==None:
+        #    return Xpath,data
+            return find_all_iframes(driver,Xpath,data)
 
 
 
