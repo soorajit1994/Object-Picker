@@ -1,33 +1,20 @@
-def locate_all_iframes(driver,xpath,op):
-    iframes = driver.find_elements_by_xpath("//iframe")
-    element=None
-    for index, iframe in enumerate(iframes):
+ global driver
+    try:
         
-        driver.switch_to.frame(index)
-        try:
-            element=driver.find_element_by_xpath(xpath)
-            if op=="ADD":
-                driver.execute_script("arguments[0].style.border = '0.4em solid yellow';",element)
-            if op=="REMOVE":
-                driver.execute_script("arguments[0].style.border = '';",element)
         
-           
+        if LOCATED!="":
+            try:
+                element1=locate_all_iframes(driver,LOCATED,"REMOVE")
+                
+            except:
+                element=locate_all_iframes(driver,xpath,"ADD")
+                
+        element=locate_all_iframes(driver,xpath,"ADD")
+        
+        
+        return "PASS"
+    except Exception as e:
 
-            
-        except:
-            pass
-        locate_all_iframes(driver,xpath,op)
-        driver.switch_to.parent_frame()  
-    if element is None:
-        try:
-            element=driver.find_element_by_xpath(xpath)
-            if op=="ADD":
-                driver.execute_script("arguments[0].style.border = '0.4em solid yellow';",element)
-            if op=="REMOVE":
-                driver.execute_script("arguments[0].style.border = '';",element)
-            return element
-        except:
-            return None
-
-    else:
-        return element
+        print(str(e))
+       
+        return "FAIL"
