@@ -1,366 +1,610 @@
-<link rel="shortcut icon" href="/static/image/QICON.ico" type="image/x-icon" /> 
+var xpath_dataRec=[];
+var xpath_dataRec_api=[];
+var APIS=[];
+var flag_api=0;
+var XPATHS=[];
 
+var xpath_data=[];
+function containsObject(obj, list) {
+  var i;
+  for (i = 0; i < list.length; i++) {
+      if (JSON.stringify(list[i]) === JSON.stringify(obj)) {
+          return true;
+      }
+  }
 
-
-
-<link rel="stylesheet" type="text/css"  href="/static/recorder/recorder.css" >
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/static/jquery-bootstrap/notify.js"></script>
-<script src="/static/jquery-bootstrap/notify.min.js"></script>
-<link rel="stylesheet"  href="/static/jquery-bootstrap/w3.css" >
-<link rel="stylesheet" type="text/css" href="/static/filter/filter.css" >
-<script src="/static/jquery-bootstrap/codemirror.min.js"></script>
-<link rel="stylesheet"  href="/static/jquery-bootstrap/codemirror.css" >
-<script src="/static/mode/clike/clike.js"></script>
-<script src="/static/mode/gherkin/gherkin.js"></script>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-
-    <title>
-     Object Spy Dev 1.0 
-    </title>
-    <body>
-      <a id="button"></a>
-        <iframe id="my_iframe" style="display:none;"></iframe>
-<div id="navbar">
-        <span class="brand" style="color:#ffa31a; margin:20px;	font-family: 'candara';font-weight: 900;"><a class="logo"><i class="fa fa-recycle"></i></a> Object Spy   </span>
+  return false;
+}
+function htmlEntities(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+////$('#Paris').click()
+$('#stop').hide();
+var watch = (function(){
+    var timer = document.getElementById("timer");
+    var stop = document.getElementById("stop");
+    var reset = document.getElementById("reset");
+    var time = "00:00"
+    var seconds = 0;
+    var minutes = 0;
+    var t;
+  
+    timer.textContent = time;
+  
+    function buildTimer () {
+      seconds++;
+          if (seconds >= 60) {
+              seconds = 0;
+              minutes++;
+              if (minutes >= 60) {
+                  minutes = 0;
+                  seconds = 0;
+              }
+          }
+      timer.textContent = (minutes < 10 ? "0" + minutes.toString(): minutes) + ":" + (seconds < 10 ? "0" + seconds.toString(): seconds);
         
-        <div style=" display: flex; float: right;flex-direction: row;">
-          
-                <div id="timer">00:00</div><br>
-                <div style="margin:24px;">
-             <a href="#" id="start" >  <img src="/static/image/record.png"  width="40" height="40">
-             </a>
-             
-                
-              
-      <a id="stop" href="#"><img src="/static/image/stop.png" class="heart" width="40" height="40"></a></div></div>
-      </div>
+
+
+         try{
+           
+          $.getJSON('/QRec', {
+				  
+            track:"Hello",
+         }, function(data) {
+          if(data.status==="FAIL"){
+            
+            $.notify("Error: Driver is not initialized","error");
       
-      <br><br><br><br><br>
+            clearTimeout(t);
+        timer.textContent = time;
+        seconds = 0; minutes = 0;
+        $('#stop').hide();
+        $('#start').show();
+      
+
+          
+          }
+          else{
+       var listss=''
+       if(data.data!==null&&data.data.length!==0){
+        if(containsObject(JSON.parse(data.data),xpath_data)){
+         //pass
+         console.log("Already Present")
+        }
+        else{
+          ///console.log(data.result[d],xpath_data);
+          xpath_data.push(JSON.parse(data.data));
+        }
+    
+        var TAB=`<div id="tabhead" class="tab">
+        <button class="tablinks" ><b>Objects</b></button> </div>`;
+       $( "#tabhead" ).replaceWith( TAB);
+       listss+=`<div style='margin:5px;'><label >About `+String(xpath_data.length)+` results</label><input style="margin:5px" placeholder="Search for objects.." type="text" id="myInput" onkeyup="searchFunction()" /></div>`;
+       listss+=`<ul id="mylist">`
+       for(var k=0;k<xpath_data.length;k++){
+         var TXT=''
+         xpath_data[k]['TEXT'].trim()===""?TXT=xpath_data[k]['OBJ']:TXT=xpath_data[k]['TEXT'];
+         if(TXT.length>70){
+           TXT=TXT.substring(0,70)+"..."
+         }
+         listss+=`<li><div class='sectionContent `+xpath_data[k]['TAG']+`'><input id="CHECK_ELE" type="checkbox" name="Ele_value" value="`+xpath_data[k]['XPATH']+`" rel2="`+xpath_data[k]['TAG']+`" rel3="`+xpath_data[k]['TEXT']+`" rel="`+xpath_data[k]['OBJ']+`" ><button type='button' onclick="showDetails(`+k+`);" class='collapsible2'><strong>`+htmlEntities(TXT)+`<i style="float:right" class="fa fa-angle-right"></i></strong></button></div></li>`;
+ 
+         
+ 
+ 
+       
+      
+     }
+     listss+="</ul>"
+    
+     document.getElementById("mainContainer2").innerHTML=listss
+     sections = $('.sectionContent');
+     updateContentVisibility();
+    
+     $('#proceed').prop('disabled', false);
+     //// showDetails(xpath_data.length-1);
+      }
+            
      
-      <div>
-        <div class="sidenav">
-          
-          <a href="#" title="Clear All"  class="google" onclick='EraseRec();'><i class="fa fa-eraser"></i></a> 
-          <a href="#" title="Save as Excel"  class="twitter" onclick='downloadCSVRec({ filename: "Recorded.csv" });'><i class="fa fa-file-excel-o"></i></a> 
-         
-          <a style="       
-          background:#6A55C2;color: white; " href="#" title="Configurations" ><i class="fa fa-cog"></i></a> 
-        </div>
-
-      <div class="content">
-       
-        <div style="margin-left: 160px;margin-right: 160px; display:flex;flex-direction: row;">
-          <div id="loader" class="loading">Loading&#8230;</div>
-
-
-          <div>
-            <div class="card2">
-                
-                <div style="justify-content: center;" >
-                  <div class="tab">
-                    <button class="tablinks" ><b>Collect Xpaths</b></button> </div>
-                  <br>
-                 
-                  <div id="GEN_PL"class="form-group">
-                     
-                      <div class="col-lg-10">
-                          <input id="URL" name="url"  type="url" placeholder="Enter URL" class="form-control" pattern="https://.*" required value="https://redbus.in">
-    </div>
-    </div>
-    <hr>
-    
-    
-    <div id="GEN_PL"class="form-group">
-                     
-        <div class="col-lg-10">
-            <select class="form-control" style="font-family: FontAwesome;
-            font-weight: 900;">
-                <option value="audi"><---SELECT BROWSER---></option>
-                <option value="volvo">&#xf268;  Chrome</option>
-                <option value="saab">&#xf269;   FireFox</option>
-                <option value="opel">&#xf267;   Safari</option>
-                
-              </select>
-    </div>
-    </div>
-    
-    <hr>
-    <button id="collect" type="button" class="btn btn-primary" style=" background:#1c53a3;border-color: #0d274c;border: 1px solid transparent; float:right;margin:15px;position:relative;font-size: 18px;" onclick="GetAll()" >Collect</button>
-    <button id="launch" type="button" class="btn btn-primary" style="background:#1c53a3;border-color: #0d274c;border: 1px solid transparent;  float:left;margin:15px;position:relative;font-size: 18px;" onclick="Launch()">Launch</button>
-                </div>
-              </div>
-             
-          <div class="card2_3">
-              <div id="locact" style="justify-content: center;">
-                <div style="text-align:left;">
-                  <h4 style="color:#1c53a3;vertical-align: middle;text-align: center;"> <strong><i class="fa fa-code"></i>  Class</strong></h4> </div>
-                  <hr>
-                  
-              <label  style="margin:10px;"  > <input id="FACTORY" type="checkbox" value="PAGELOCATOR" checked/>Page Factory  </label>
-              
-              <label  style="margin:10px;" > <input id="CLASS" type="checkbox" value="PAGEACTION"  checked/>Page Class  </label>
-              <div style="padding-left: 15px;">
-                  <button id="proceed" style="background:#1c53a3;border-color: #0d274c;border: 1px solid transparent; width:300px;"type="button" class="btn btn-primary">Proceed</button>
         
-                </div>
-            </div>
-    
-          </div>
-            <div class="card3">
-                
-                <div style="justify-content: center;" >
-                  <div style="text-align:left;">
-                  <h4 style="color:#1c53a3;vertical-align: middle;text-align: center;"> <strong><i class="fa fa-filter"></i>  Filter</strong></h4> </div>
-                  <hr>
-                  <br>
-                 
-                  <div id="GEN_PL"class="form-group">
-                     
-                      <div class="col-lg-10">
-                          <label  ><input onchange="checkAll(this)" name="chk[]" type="checkbox"  />Select All  </label>
-                         
-                         
-    
-    </div>
-    </div>
-    <div id="GEN_PL"class="form-group">
-                     
-        <div class="col-lg-10">
-            <label  ><input  onchange="checkAllContents(this)" name="chk[]" type="checkbox"  />Contents Only  </label>
-           
-           
-    
-    </div>
-    </div>
-    <hr>
-    
-    
-    <div id="GEN_PL"class="form-group">
-                     
-        <div class="col-lg-10">
-            <ul id="myUL" >
-                <li><span class="caret2">Common Tags</span>
-                  <div id="demo"></div>
-                  <ul  id="filterControls" class="nested" >
-                    <li> <label  > <input type="checkbox"  value="DIV" />Div  </label></li>
-                    <li><label  > <input type="checkbox"  value="A" />Anchor  </label></li>
-                    <li><label  > <input type="checkbox"  value="BUTTON" />Button  </label></li>
-                    <li><label  > <input type="checkbox"  value="INPUT" />Input  </label></li>
-                    <li><label > <input type="checkbox"  value="SPAN" />Span  </label></li>
-                    <li><label  > <input type="checkbox"  value="CHECKBOX" />Checkbox  </label></li>
-                    <li><label  > <input type="checkbox"  value="RADIO" />Radiobutton  </label></li>
-                    <li><label  > <input type="checkbox"  value="IMG" />Image  </label></li>
-                    <li><label  > <input type="checkbox"  value="CANVAS" />Canvas  </label></li>
-                    <li><label  > <input type="checkbox"  value="TEXTAREA" /> Textarea </label></li>
-                    <li><span class="caret2">Style Tags</span>
-                      <ul  id="filterControls" class="nested">
-                        <li> <label  > <input type="checkbox" name="vehicle1" value="STRONG" />Strong  </label></li>
-                        <li><label  > <input type="checkbox" name="vehicle1" value="B" />Bold  </label></li>
-                        <li><label  > <input type="checkbox" name="vehicle1" value="I" />Italic  </label></li>
-                        <li><label  > <input type="checkbox" name="vehicle1" value="EM" /> Emphasis   </label></li>
-                        
-                         
-                      </ul>
-                    </li>
-                    <li><span class="caret2">Content Tags</span>
-                      <ul  id="filterControls" class="nested">
-                        <li> <label  > <input type="checkbox"  value="P" />Paragraphs  </label></li>
-                        <li><label   > <input type="checkbox"  value="LABEL" />Label</Label></li>
-                          <li> <label  > <input type="checkbox"  value="PRE" />PRE  </label></li>
-                        <li><span class="caret2">Headers</span>
-                          <ul class="nested">
-                            <li><label > <input type="checkbox" value="H1" />H1  </label></li>
-                            <li><label  > <input type="checkbox"  value="H2" />H2 </label></li>
-                            <li><label  > <input type="checkbox"  value="H3" />H3 </label></li>
-                            <li><label > <input type="checkbox"  value="H4" />H4 </label></li>
-                            <li><label  > <input type="checkbox"  value="H5" />H5 </label></li>
-                            <li><label  > <input type="checkbox"  value="H6" />H6 </label></li></ul></li>
-                            <li><label  > <input type="checkbox" value="TD" />TD</Label></li>
-                              <li><label   > <input type="checkbox"  value="TR" />TR</Label></li>
-                                <li><label > <input type="checkbox" value="TH" />TH</Label></li>
-                                  <li><label  > <input type="checkbox"  value="LI" />LI</Label></li>
-                                    <li><label  > <input type="checkbox" value="OPTION" />Option</Label></li>
-                         
-                      </ul>
-                    </li>
-                     
-                  </ul>
-                </li>
-              </ul>
-    </div>
-    </div>
-    
-    <hr>
-    
-    
-    
-                </div>
-              </div>
-            
-    
-            </div>
-            <div style=" position: relative;
-            left:10px;
-            width:900px;
-            
-            
-            top:10px;">
-    <div  class="card">
-      <div id="tabhead" class="tab">
-        <button class="tablinks" ><b>Instructions</b></button> </div>
-    
-        <div id="mainContainer2" style="margin:10px; ">
+    }
+        });
 
 
-          
-         
-          
-          <ul id="mylist">
+     }
+     catch(err){
+      $.notify("Object Picker says:"+err, "error");
+      console.log(err);
+      $("#stop").trigger("click");
+      
+      $.getJSON('/QRec_Stop', {
+				  
+        track:"Hello",
+     }, function(data) {
 
-            <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-rocket"></i> <strong> Launch the browser and Go to URL.</strong></button></div></li>
-            <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-list"></i><strong> Once Launched pick objects.</strong> </button></div></li>
-            <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-file-excel-o"></i><strong> Save all objects as Excel. </strong> </button></div></li>
-            <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-eraser"></i> <strong> Click on  Eraser to clear. </strong></button></div></li>
-            
-            
-          </ul>  
+
+     });
+
+     }
+    }
+    function stopTimer () {
+      stop.addEventListener("click", function(){
+        clearTimeout(t);
+        timer.textContent = time;
+        seconds = 0; minutes = 0;
+        $('#stop').hide();
+        $('#start').show();
         
-        </div>
+        $.getJSON('/QRec_Stop', {
+				  
+          track:"Hello",
+       }, function(data) {
+         ///
+  
+  
+       });
         
-        </div>
-
-
+      })
+     
+    }
+    function startTimer () {
+      start.addEventListener("click", function(){
+        clearTimeout(t);
+        t = setInterval(buildTimer,1000);
+        $('#start').hide();
+        $('#stop').show();
+      });
+      
+    }
     
-      </div>
-         
+    return {
+      start: startTimer(),
+      stop: stopTimer()
+      
+    };
+  })()
+  window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+window.addEventListener("beforeunload", function (e) {
+    $("#stop").click()
+  });
+
+
+  function convertArrayOfObjectsToCSVRec(args) {
+    var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+
+    data = args.data || null;
+    if (data == null || !data.length) {
+        return null;
+    }
+
+    columnDelimiter = args.columnDelimiter || ',';
+    lineDelimiter = args.lineDelimiter || '\n';
+
+    keys = Object.keys(data[0]);
+
+    result = '';
+    result += keys.join(columnDelimiter);
+    result += lineDelimiter;
+
+    data.forEach(function(item) {
+        ctr = 0;
+        keys.forEach(function(key) {
+            if (ctr > 0) result += columnDelimiter;
+
+            result += item[key];
+            ctr++;
+        });
+        result += lineDelimiter;
+    });
+
+    return result;
+}
+function convertArrayOfObjectsToCSVRec_api(args) {
+  var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+
+  data = args.data || null;
+  if (data == null || !data.length) {
+      return null;
+  }
+
+  columnDelimiter = args.columnDelimiter || ',';
+  lineDelimiter = args.lineDelimiter || '\n';
+
+  keys = Object.keys(data[0]);
+
+  result = '';
+  result += keys.join(columnDelimiter);
+  result += lineDelimiter;
+
+  data.forEach(function(item) {
+      ctr = 0;
+      keys.forEach(function(key) {
+          if (ctr > 0) result += columnDelimiter;
+
+          result += item[key];
+          ctr++;
+      });
+      result += lineDelimiter;
+  });
+
+  return result;
+}
+function downloadCSVRec(args) {
+  if(xpath_dataRec.length===0){
+
+    $.notify("Empty Recordings", "warn");
+  }
+    var data, filename, link;
+
+    var csv = convertArrayOfObjectsToCSVRec({
+        data: xpath_dataRec
+    });
+    if (csv == null) return;
+
+    filename = args.filename || 'export.csv';
+
+    if (!csv.match(/^data:text\/csv/i)) {
+        csv = 'data:text/csv;charset=utf-8,' + csv;
+    }
+    data = encodeURI(csv);
+
+    link = document.createElement('a');
+    link.setAttribute('href', data);
+    link.setAttribute('download', filename);
+    link.click();
+}
 
 
 
 
+// When the user clicks on the button, scroll to the top of the document
+var btn = $('#button');
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 300) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '300');
+});
 
 
 
+$('input[type="radio"]').on('change', function(){
+var choice= $(this).val();
+if(choice==="api"){
+  $('#myTable').hide();
+
+
+  flag_api=1;
+ 
 
 
 
-</div>
+}
+else{
 
-            
-        </div>
-      </div>
-           <!-- Property Modal Modal -->
-  <div class="modal fade" id="modal_click_property" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Property Details-   <span id="object" style="margin:5px"></span><b><a style="margin:5px" href="#" id="pencil" ><i class="fa fa-pencil" ></i></a></b></h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-         
-        </div>
-        <div class="modal-body">
-          
+ 
 
-          <div class="tab">
-            <button id="prop" class="tablinks" onclick="openCity(event, 'London')"><b>Properties</b></button>
-            <button id="op" class="tablinks" onclick="openCity(event, 'Paris')"><b>CSS Properties</b></button>
-            <button id="Styles" class="tablinks" onclick="openCity(event, 'Kolkata')"><b>Operations</b></button>
-            <button id="hir" class="tablinks" onclick="openCity(event, 'Tokyo')"><b>Hierarchy</b></button>
-          
-          </div>
-          <div id="stick">
-        
-        
-        <div id="London" class="tabcontent">
-          <table id="myTable" class="table">
-            <thead>
-              <tr>
-                <th>Properties</th>
-                <th>Values</th>
-              
-              </tr>
-            </thead>
-            <tbody id="PROP">
-              
-             
-            </tbody>
-          </table>
-        </div>
-        
-        <div id="Paris" class="tabcontent">
-          <table id="myTable2" class="table">
-            <thead>
-              <tr>
-                <th>CSS Properties</th>
-                <th>Values</th>
-                
-              
-              </tr>
-            </thead>
-            <tbody id="CSS">
-              
-            
-             
-            </tbody>
-          </table>
-       
-        </div>
-        <div id="Kolkata" class="tabcontent">
-          <table id="myTable3" class="table">
-            <thead>
-              <tr>
-                <th>Operations</th>
-                <th>Descriptions</th>
-              
-              </tr>
-            </thead>
-            <tbody id="OPP">
-              <tr>
-                
+  flag_api=0;
+
+}
+});
+
+
+function EraseRec(){
+document.getElementById("mylist").innerHTML=`    <li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-rocket"></i> <strong> Launch the browser and Go to URL.</strong></button></div></li>
+<li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-list"></i><strong> Once Launched pick objects.</strong> </button></div></li>
+<li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-file-excel-o"></i><strong> Save all objects as Excel. </strong> </button></div></li>
+<li><div class='sectionContent'><button type='button' class='collapsible'> <i class="fa fa-eraser"></i> <strong>Click on  Eraser to clear. </strong></button></div></li>
+`;
+  xpath_data=[];
+  document.getElementById("OPP").innerHTML='';
+  document.getElementById("CSS").innerHTML='';
+  document.getElementById("PROP").innerHTML='';
+  document.getElementById("Tokyo").innerHTML='';
+  $("#card-footer").fadeOut();
    
-               
-              </tr>
-            
-             
-            </tbody>
-          </table>
-       
-        </div>
+ 
+
+}
+
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+$(document).ready(function() {
+document.getElementById("prop").click();
+$("#loader").hide();
+
+});
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function setFontSize(el) {
+    var fontSize = el.val();
+    
+    if ( isNumber(fontSize) && fontSize >= 0.5 ) {
+      $('body').css({ fontSize: fontSize + 'em' });
+    } else if ( fontSize ) {
+      el.val('1');
+      $('body').css({ fontSize: '1em' });  
+    }
+}
+
+$(function() {
+  
+  $('#fontSize')
+    .bind('change', function(){ setFontSize($(this)); })
+    .bind('keyup', function(e){
+      if (e.keyCode == 27) {
+        $(this).val('1');
+        $('#Tokyo').css({ fontSize: '1em' });  
+      } else {
+        setFontSize($(this));
+      }
+    });
+  
+  $(window)
+    .bind('keyup', function(e){
+      if (e.keyCode == 27) {
+        $('#fontSize').val('1');
+        $('#Tokyo').css({ fontSize: '1em' });  
+      }
+    });
+  
+});
+
+function Launch(){
+
+
+  $.getJSON('/launch', {
+				  
+    url:$('input[name=url]').val(),
+ }, function(data) {
+
+console.log(data);
+ });
+
+
+}
+
+function CopyToClipboard(containerid) {
+  if (document.selection) { 
+      var range = document.body.createTextRange();
+      range.moveToElementText(document.getElementById(containerid));
+      range.select().createTextRange();
+      document.execCommand("copy"); 
+  
+  } else if (window.getSelection) {
+      var range = document.createRange();
+       range.selectNode(document.getElementById(containerid));
+       window.getSelection().addRange(range);
+       document.execCommand("copy");
+    $.notify("Xpath Copied to Clipboard","success"); 
+  }}
+
+
+  function GetAll(){
+    $("#loader").show();
+
+    $.getJSON('/collect', {
+				  
+      track:"Hello",
+   }, function(data) {
+
+    if(data.status==="FAIL"){
+      $.notify("Error: Driver is not initialized","error");
+     $("#loader").hide();
+
+    }
+
+
+
+    else{
+    for (d=0;d<data.data.length;d++){
+      if(containsObject(data.data[d],xpath_data)){
+       //pass
+      }
+      else{
+        ///console.log(data.result[d],xpath_data);
+        xpath_data.push(data.data[d]);
+      }
+    }
+   
+            var listss=''
+   
+    if(xpath_data!==null&&xpath_data.length!==0){
+       var TAB=`<div id="tabhead" class="tab">
+       <button class="tablinks" ><b>Objects</b></button> </div>`;
+      $( "#tabhead" ).replaceWith( TAB);
+      listss+=`<div style='margin:5px;'><label >About `+String(xpath_data.length)+` results</label><input style="margin:5px" placeholder="Search for objects.." type="text" id="myInput" onkeyup="searchFunction()" /></div>`;
+      listss+=`<ul id="mylist">`
+      for(var k=0;k<xpath_data.length;k++){
+        var TXT=''
+        xpath_data[k]['TEXT'].trim()===""?TXT=xpath_data[k]['OBJ']:TXT=xpath_data[k]['TEXT'];
+        if(TXT.length>70){
+          TXT=TXT.substring(0,70)+"..."
+        }
+        listss+=`<li><div class='sectionContent `+xpath_data[k]['TAG']+`'><input id="CHECK_ELE" type="checkbox" name="Ele_value" value="`+xpath_data[k]['XPATH']+`" rel2="`+xpath_data[k]['TAG']+`" rel3="`+xpath_data[k]['TEXT']+`" rel="`+xpath_data[k]['OBJ']+`" ><button type='button' onclick="showDetails(`+k+`);"  class='collapsible2'><strong>`+TXT+`<i style="float:right" class="fa fa-angle-right"></i></strong></button></div></li>`;
+
         
-        <div id="Tokyo" class="tabcontent">
-         
-          
-          </div>
-        </div>
-          <div id="card-footer" style="display:none;" class="card-footer">
-           
-          </div>
 
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-        </body>
-</html>
+      
+     
+    }
+    listss+="</ul>"
+   
+    document.getElementById("mainContainer2").innerHTML=listss
+    sections = $('.sectionContent');
+    updateContentVisibility();
+    $("#loader").hide();
+    $('#proceed').prop('disabled', false);
+  ////  showDetails(xpath_data.length-1);
+    }
+  }
+   });
+
+
+  }
+
+  function showDetails(x){
+   
+    $('#modal_click_property').modal('show'); 
+   
+
+var row_data=xpath_data[x];
+var node_html=''
+document.getElementById("pencil").setAttribute("onclick","editDetails("+x+")")
+
+document.getElementById("object").innerHTML=`<b>`+row_data["OBJ"] +`</b>`;
+for(var t=0;t<row_data["NODES"].length;t++){
+  var table = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+  var row = table;
+ 
+  
+  node_html += '<tr><td class="text-left">'+row_data["NODES"][t]+'</td><td class="text-left">'+row_data["VALUES"][t].substring(0,50)+'</td></tr>';
+
+ 
+  }
+  row.innerHTML=node_html;
+  var style_html='';
+  for(var t=0;t<row_data["STYLE_NODES"].length;t++){
+    var table2 = document.getElementById('myTable2').getElementsByTagName('tbody')[0];
+    var row2 = table2;
+   
+    
+    style_html+=  '<tr><td class="text-left">'+row_data["STYLE_NODES"][t]+'</td><td class="text-left">'+row_data["STYLE_VALUES"][t].substring(0,50)+'</td></tr>';
+
+   
+    }
+    row2.innerHTML=style_html;
+    var op_html=''
+    for(var t=0;t<row_data["OPERATIONS"].length;t++){
+      var table3 = document.getElementById('myTable3').getElementsByTagName('tbody')[0];
+      var row3 = table3;
+     
+      
+      op_html+= '<tr><td class="text-left">'+row_data["OPERATIONS"][t]+'</td><td class="text-left">'+row_data["OPERATIONS_VALUES"][t].substring(0,50)+'</td></tr>';
+
+     
+      }
+      row3.innerHTML=op_html;
+    document.getElementById("Tokyo").innerHTML=row_data["HIERARCHY"];
+    document.getElementById("card-footer").innerHTML="<p >Relative Xpath: <span id='div1' >"+row_data["XPATH"]+"</span><a  id='locate' onclick='Locate();' title='Locate element on Page' href='#' style='margin:5px;font-size:20px;float:right;color:white;'>   <i  class='fa fa-eye' ></i></a><a style='margin:5px;font-size:20px;float:right;color:white;' id='copy' title='Copy Xpath to Clipboard' href='#'><i  class='fa fa-clipboard' ></i></a> </p>";
+    $("#card-footer").fadeIn();
+    var myEl = document.getElementById('copy');
+    
+    myEl.addEventListener('click', function() {
+      CopyToClipboard('div1');
+    }, false);
+
+    }
+    
+  
+  
+
+  function searchFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("mylist");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("button")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+var toggler = document.getElementsByClassName("caret2");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+  toggler[i].addEventListener("click", function() {
+    this.parentElement.querySelector(".nested").classList.toggle("active");
+    this.classList.toggle("caret2-down");
+  });
+}
+
+
+function Locate(){
+ 
+  var x=document.getElementById("div1").innerText;
+  
+console.log(x);
+$.getJSON('/locate', {
+  xpath:x,
+  }, function(data) {
+
+    if(data.status==="FAIL"){
+      $.notify("Failed to locate the element", "warn");
+
+    }
+
+
+  });
+ }
+
+
+ function editDetails(x){
+  
+document.getElementById("object").setAttribute("contenteditable", "true");
+document.getElementById("object").setAttribute("onblur", "blurfunc("+x+")");
+ }
+ function blurfunc(x){
+  var X=xpath_data[x]["XPATH"]
+  document.getElementById("object").setAttribute("contenteditable", "false");
+  var T=document.getElementById("object").innerText;
+
+  var eles = document.getElementsByName("Ele_value");
+  for(var e=0;e<eles.length;e++){
+
+
+    if(eles[e].value===X){
+      eles[e].setAttribute("rel", document.getElementById("object").innerText.trim());
+      eles[e].nextSibling.innerHTML=`<strong>`+document.getElementById("object").innerText.trim()+`<i style="float:right" class="fa fa-angle-right"></i></strong>`
+      xpath_data[x]["OBJ"]=document.getElementById("object").innerText.trim();
+
+        break;
+    }
+  }
 
 
 
 
-<script type="text/javascript" src="/static/recorder/recorder.js"></script>
-<script type="text/javascript" src="/static/recorder/loc_act.js"></script>
-<script type="text/javascript" src="/static/filter/filter.js"></script>
-<script>
 
-</script>
+ }
