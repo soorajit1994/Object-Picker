@@ -1,45 +1,25 @@
-@app.route('/GetAttr')
-def GetAttr():
-    try:
-        data=PL_PA.GetAttributes()
-        return jsonify(data=data,status="PASS")
-    except (selenium.common.exceptions.WebDriverException,AttributeError) as e:
-            print(str(e))
-            return jsonify(data=[],status="FAIL")
-
-def GetAttributes():
-    JS='''
-
- var attributes=[];
-   var tags=[];
-   
-   var rejected_tags=['SCRIPT','STYLE','NOSCRIPT','NOFRAME','TRACK','VIDEO','FONT','EVENTSOURCE','RECT','PATH','path','circle'];
-   
-   var rejected_attributes=['style','align','allow','autocapitalize','autocomplete','autofocus','autoplay','bgcolor','border','buffered','charset','checked','color','cols','colspan','contenteditable','controls','crossorigin','decoding','disabled','download','draggable','hidden','spellcheck','tabindex','translate','height','maxlength','max','min','sandbox','rowspan','width','size','aria-haspopup','aria-expanded','aria-labelledby','aria-label','datetime','aria-hidden','focusable','data','data-ga','data-google-query-id','onclick','onabort', 'onautocomplete', 'onautocompleteerror', 'onblur', 'oncancel', 'oncanplay', 'oncanplaythrough', 'onchange', 'onclick', 'onclose', 'oncontextmenu', 'oncuechange', 'ondblclick', 'ondrag', 'ondragend', 'ondragenter', 'ondragexit', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'ondurationchange', 'onemptied', 'onended', 'onerror', 'onfocus', 'oninput', 'oninvalid', 'onkeydown', 'onkeypress', 'onkeyup', 'onload', 'onloadeddata', 'onloadedmetadata', 'onloadstart', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onpause', 'onplay', 'onplaying', 'onprogress', 'onratechange', 'onreset', 'onresize', 'onscroll', 'onseeked', 'onseeking', 'onselect', 'onshow', 'onsort', 'onstalled', 'onsubmit', 'onsuspend', 'ontimeupdate', 'ontoggle', 'onvolumechange', 'onwaiting','d','title'];
-
-var elements=document.body.getElementsByTagName("*");
-    for(e=0;e<elements.length;e++){
-            var el=elements[e];
-        for (var i = 0, atts = el.attributes, n = atts.length, arr = []; i < n; i++){
-            if(!rejected_attributes.includes(atts[i].nodeName)&&!/^\d+$/.test(atts[i].nodeValue)&&atts[i].nodeValue!=='true'&&atts[i].nodeValue!=='false'&&atts[i].nodeValue.toLowerCase!=='both'&&!attributes.includes(atts[i].nodeName)&&atts[i].nodeValue.length<60&&atts[i].nodeValue.trim()!==""){
-            attributes.push(atts[i].nodeName);
+if(elements[e].textContent.trim()!==""){
+            if(attribute_list.includes("WholeText")){
+            if(elements[e].textContent.length<30){
+            X='//'+elements[e].tagName.toLowerCase()+"[text()='"+elements[e].textContent+"']";
+            var locator = getElementsByXPath(X);
+            if(locator.length===1){
+            results='True'
+            break
             }
-         }
-        var tag=el.tagName;
-        if(!rejected_tags.includes(tag)&&!tags.includes(tag)){
-                tags.push(tag);
+            }
+            else{
+              X="//*[contains(text(),'"+elements[e].textContent.trim().substring(0,30)+"')]"
+              var locator = getElementsByXPath(X);
+            if(locator.length===1){
+            results='True'
+            break
             }
 
-      }
- ///   attributes.unshift("id", "class");
-  ///  console.log(attributes,tags);
+
+            }
 
 
 
-return {"attributes":attributes,"tags":tags};
-    '''
-    return driver.execute_script(JS)
-attr=request.args.get('attr', 0, type=str)
-tags=request.args.get('tags', 0, type=str)
-attr=ast.literal_eval(attr)
-tags=ast.literal_eval(tags)
+          }
+        }
