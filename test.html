@@ -1,107 +1,29 @@
-#shell {
-    width: 500px;
- 
-    background: #000;
-    border-radius: 8px;
-    margin: 0 auto;
-    color: #383838;
-}
-#upper {
-    background: #e5e5e5;
-    background: -webkit-linear-gradient(#e5e5e5 0%, #b0b0b0 100%);
-    background: linear-gradient(#e5e5e5 0%, #b0b0b0 100%);
-    background-image: -moz-linear-gradient(#e5e5e5 0%, #b0b0b0 100%);
-    -webkit-border-radius: 3px 3px 0px 0px;
-    -moz-border-radius: 3px 3px 0px 0px;
-    border-radius: 3px 3px 0px 0px;
-    height: 23px;
-    text-align: center;
-    padding-top: 5px;
-    border-bottom: 2px solid #333;
-}
-.title {
-    margin-left: -70px;
-}
-.button {
-    width: 12px;
-    height: 12px;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
-    margin: 3px 3px 3px 3px;
-    float: left;
-}
-.red {
-    background: #f04341;
-    border: 1px solid #eb1513;
-}
-.yellow {
-    background: #f5b868;
-    border: 1px solid #f2a238;
-}
-.green {
-    background: #96cf7d;
-    border: 1px solid #78c158;
-}
-#main {
-    padding: 5px;
-    color: #c0c7c7;
-}
-#main .fore {
-    color: #ff6c6b;
-}
-#main .accent {
-    color: #00b5c3;
-}
-#main:before {
-    content: "Last login: Today on 10.10.0.1";
-    display: block;
-}
-#enter {
-    display: inline;
-    margin-left: 0.01em;
-    width: 100%;
-    height: 100%;
-}
-#enter:focus {
-    outline: 0px solid transparent;
-}
-.inner-light-top {
-    position: relative;
-    z-index: 2;
-    margin: 0px 3px;
-    height: 10px;
-    width: 10px;
-    border-radius: 100%;
-    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
-    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
-}
-.inner-light-bottom {
-    margin: -1px 3px;
-    height: 10px;
-    width: 10px;
-    border-radius: 100%;
-    background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, .1));
-    background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, .1));
-}
-.inner-dark-top {
-    top: -10px;
-    height: 8px;
-    width: 10px;
-    border-radius: 100%;
-    position: relative;
-    z-index: 1;
-}
-.red .inner-dark-top {
-    background: rgba(235, 21, 19, .4);
-    margin: -5px 0px;
-}
-.yellow .inner-dark-top {
-    background: rgba(242, 162, 56, .4);
-    margin: 3px 0px;
-}
-.green .inner-dark-top {
-    background: rgba(120, 193, 88, .4);
-    margin: 3px 0px;
-}
-
+ smsg=`<div id="shell">
+      <div id="upper">
+        <div id="buttons">
+          <div class="button red">
+            <div class="inner-light-top"></div>
+            <div class="inner-light-bottom"></div>
+            <div class="inner-dark-top"></div>
+    
+          </div>
+          <div class="button yellow">
+            <div class="inner-light-top"></div>
+            <div class="inner-dark-top"></div>
+            <div class="inner-light-bottom"></div>
+          </div>
+          <div class="button green">
+            <div class="inner-light-top"></div>
+            <div class="inner-dark-top"></div>
+            <div class="inner-light-bottom"></div>
+          </div>
+        </div>
+        <span class="title">Testy Bot@osx: ~ (zsh)</span>
+      </div>
+      <div id="main">
+        <span class="fore">osx</span>:<span class="accent">~</span>:
+        <div id="enter" contenteditable="true">
+          <span id="filler">abd kill server</span>
+        </div>
+      </div>
+    </div>`;
