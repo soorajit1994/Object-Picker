@@ -1,29 +1,8 @@
- smsg=`<div id="shell">
-      <div id="upper">
-        <div id="buttons">
-          <div class="button red">
-            <div class="inner-light-top"></div>
-            <div class="inner-light-bottom"></div>
-            <div class="inner-dark-top"></div>
-    
-          </div>
-          <div class="button yellow">
-            <div class="inner-light-top"></div>
-            <div class="inner-dark-top"></div>
-            <div class="inner-light-bottom"></div>
-          </div>
-          <div class="button green">
-            <div class="inner-light-top"></div>
-            <div class="inner-dark-top"></div>
-            <div class="inner-light-bottom"></div>
-          </div>
-        </div>
-        <span class="title">Testy Bot@osx: ~ (zsh)</span>
-      </div>
-      <div id="main">
-        <span class="fore">osx</span>:<span class="accent">~</span>:
-        <div id="enter" contenteditable="true">
-          <span id="filler">abd kill server</span>
-        </div>
-      </div>
-    </div>`;
+while (1) {
+  $wsh = New-Object -ComObject WScript.Shell
+  # Send Shift+F15 - this is the least intrusive key combination I can think of and is also used as default by:
+  # http://www.zhornsoftware.co.uk/caffeine/
+  # Unfortunately the above triggers a malware alert on Sophos so I needed to find a native solution - hence this script...
+  $wsh.SendKeys('+{F15}')
+  Start-Sleep -seconds 59
+}
